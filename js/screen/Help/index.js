@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AsyncStorage,ScrollView,TouchableOpacity,Keyboard,Image,Platform, View, StatusBar } from "react-native";
+import { AsyncStorage,ScrollView,Dimensions,Keyboard,Image,Platform, View, StatusBar } from "react-native";
 import { Spinner, Container,Toast, Header,Title,Content,Text,H3,Button,Icon,Footer,FooterTab,Left,Right,Body,Segment } from "native-base";
 
 import styles from "./styles";
@@ -166,8 +166,8 @@ class Help extends React.PureComponent {
           </Left>
           
           <Segment style={styles.body}>
-          <Button transparent first active={this.state.tab1} onPress={() => this._onPressHelpApp()}><Text style={{width: 100,color:"#000000",fontSize:12}} >Help App</Text></Button>
-          <Button transparent last active active={this.state.tab2} onPress={() => this._onPressHelpGuide()}><Text style={{width:100,color:"#000000",fontSize:12}} >Help Guide</Text></Button>
+          <Button transparent first active={this.state.tab1} onPress={() => this._onPressHelpApp()}><Text style={{width: 100,color:"#000000",fontSize:14}} >App</Text></Button>
+          <Button transparent last active active={this.state.tab2} onPress={() => this._onPressHelpGuide()}><Text style={{width:100,color:"#000000",fontSize:14}} >Guide</Text></Button>
         </Segment>
         </Header>
 
@@ -177,9 +177,9 @@ class Help extends React.PureComponent {
             <H3>
               {this.state.data.title}
             </H3>
-            <HTML
-                html={this.state.data.content}
-                stylesheet={styles.html}/>
+            <ScrollView style={{ flex: 1 }}>
+              <HTML html={this.state.data.content} stylesheet={styles.html} imagesMaxWidth={Dimensions.get('window').width} />
+            </ScrollView>
             </View>
           </ScrollView>
         </Content>

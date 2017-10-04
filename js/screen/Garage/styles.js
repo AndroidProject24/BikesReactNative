@@ -40,7 +40,7 @@ export default {
     color: "#000000"
   },
   summary2: {
-    marginTop:20,
+    marginTop:17,
     fontSize: 14,
     fontFamily: "Roboto",
     color: "#000000"

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {AsyncStorage, ScrollView, TouchableOpacity, Keyboard, Image, View, StatusBar} from "react-native";
+import {AsyncStorage, ScrollView, Dimensions, Keyboard, Image, View, StatusBar} from "react-native";
 import {
     Spinner,
     Container,
@@ -19,7 +19,6 @@ import {
 } from "native-base";
 import styles from "./styles";
 import axios from "axios";
-import PropTypes from "prop-types";
 import api from "../../../utilities/Api";
 import HTML from 'react-native-render-html';
 
@@ -97,29 +96,27 @@ class NewsDetails extends React.Component {
             return Toast.show({text: "Lấy dữ liệu bị lỗi!", position: 'top', duration: 2000});
         }
         return (
-            <ScrollView style={styles.container}>
-                <Container>
-                    <Header>
-                        <Left>
-                            <Button transparent onPress={() => this.props.navigation.goBack()}>
-                                <Icon name="arrow-back"/>
-                            </Button>
-                        </Left>
-                        <Body>
-                        <Title style={styles.titleToolbar}>{this.state.data.title}</Title>
-                        </Body>
-                        <Right/>
-                    </Header>
-                    <Content padder>
-                        <H3 style={styles.title}>
-                            {this.state.data.title}
-                        </H3>
-                        <HTML
-                            html={this.state.data.content}
-                            stylesheet={styles.content}/>
-                    </Content>
-                </Container>
-            </ScrollView>
+            <Container style={styles.container}>
+                <Header>
+                    <Left>
+                        <Button transparent onPress={() => this.props.navigation.goBack()}>
+                            <Icon name="arrow-back"/>
+                        </Button>
+                    </Left>
+                    <Body>
+                    <Title style={styles.titleToolbar}>{this.state.data.title}</Title>
+                    </Body>
+                    <Right/>
+                </Header>
+                <Content padder>
+                    <H3 style={styles.title}>
+                        {this.state.data.title}
+                    </H3>
+                    <ScrollView style={{ flex: 1 }}>
+                        <HTML html={this.state.data.content} stylesheet={styles.content} imagesMaxWidth={Dimensions.get('window').width} />
+                    </ScrollView>
+                </Content>
+            </Container>
         );
     }
 }

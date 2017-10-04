@@ -160,7 +160,7 @@ class QRCode extends React.Component {
 
     _renderTitleBar(){
         return(
-            <Text style={{color:'white',textAlignVertical:'center', textAlign:'center',font:25,padding:12}}>Quét QRCode để đăng ký xe</Text>
+            <Text style={{color:'white',textAlignVertical:'center', textAlign:'center',font:35,padding:12}}>Quét QRCode để đăng ký xe</Text>
         );
     }
     _renderMenu() {

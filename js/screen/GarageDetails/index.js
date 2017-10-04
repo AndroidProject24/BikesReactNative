@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AsyncStorage,ScrollView,TouchableOpacity,Keyboard,Image, View, StatusBar } from "react-native";
+import { AsyncStorage,ScrollView,Dimensions,Keyboard,Image, View, StatusBar } from "react-native";
 import { Spinner, Container,Toast,Header,Title,Content,Text,H3,Button,Icon,Footer,FooterTab,Left,Right,Body } from "native-base";
 import HTML from 'react-native-render-html';
 import styles from "./styles";
@@ -116,9 +116,9 @@ class GarageDetails extends React.Component {
                 {this.state.data.max_bike+""}
             </Text>
           </Text>
-          <HTML
-              html={this.state.data.description}
-              stylesheet={styles.content}/>
+          <ScrollView style={{ flex: 1 }}>
+            <HTML html={this.state.data.description} stylesheet={styles.content} imagesMaxWidth={Dimensions.get('window').width} />
+          </ScrollView>
       </Content>
       </Container>
     </ScrollView>
