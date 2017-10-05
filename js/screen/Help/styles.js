@@ -10,6 +10,7 @@ export default {
   },
   body: {
     marginTop:5,
+    marginLeft:20,
     backgroundColor: "transparent",
     justifyContent: "center"
   },

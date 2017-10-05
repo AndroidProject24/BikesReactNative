@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {AsyncStorage, Alert,View,DeviceEventEmitter} from "react-native";
+import {AsyncStorage, Alert, View, DeviceEventEmitter} from "react-native";
 import {
     Spinner,
     Container,
@@ -16,45 +16,42 @@ import {
 } from "native-base";
 import styles from "./styles";
 import axios from "axios";
-import { QRScannerView } from 'ac-qrcode';
+import {QRScannerView} from 'ac-qrcode';
 import api from "../../../utilities/Api";
+
 const Permissions = require('react-native-permissions');
+var isCheck = true;
 //import { RNLocation as Location } from 'NativeModules'
 
 class QRCode extends React.Component {
     state = {
         cameraPermission: null,
-        locationPermission:null
+        locationPermission: null
     };
 
     constructor(props) {
         super(props);
         this.state = {
-            tab1: false,
-            tab2: false,
-            tab3: true,
-            tab4: false,
             isLoading: true,
-            isCheck: true,
             bikesID: "",
-            data: []
+            data: [],
+            location: {
+                coords: {
+                    course: 358.28,
+                    speed: 0,
+                    longitude: 10.805297,
+                    latitude: 106.685212,
+                    accuracy: 5,
+                    altitude: 0,
+                    altitudeAccuracy: -1
+                },
+                timestamp: 0
+            }
         };
-        this.state = { location: {
-            coords: {
-                course:358.28,
-                speed:0,
-                longitude:-122.02322184,
-                latitude:37.33743371,
-                accuracy:5,
-                altitude:0,
-                altitudeAccuracy:-1
-            },
-            timestamp:0
-        }
-        }
         this.onChange = this.onChange.bind(this);
 
     }
+
     // componentWillMount() {
     //     Location.requestAlwaysAuthorization();
     //     Location.startUpdatingLocation();
@@ -72,74 +69,52 @@ class QRCode extends React.Component {
                     locationPermission: response.location
                 })
             });
+        //this.onSubmit();
     }
 
     async onSubmit() {
-        try {
-            var accessToken = await AsyncStorage.getItem("Token");
-            if (accessToken != null) {
-                console.log("onSubmit", "onSubmit");
-                axios.defaults.baseURL = "http://demo.easymove.vn/api";
-                axios.defaults.headers.common["Authorization"] = api.KEY;
-                axios.defaults.headers.common["Authorization2"] = "XeDap " + accessToken;
-                axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-                this.registerBikes();
+        if (isCheck==true) {
+            try {
+                var accessToken = await AsyncStorage.getItem("Token");
+                if (accessToken != null) {
+                    console.log("onSubmit", "onSubmit");
+                    axios.defaults.baseURL = "http://demo.easymove.vn/api";
+                    axios.defaults.headers.common["Authorization"] = api.KEY;
+                    axios.defaults.headers.common["Authorization2"] = "XeDap " + accessToken;
+                    axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+                    this.registerBikes();
+                }
+            } catch (error) {
+                console.log("AsyncStorage error: " + error);
             }
-        } catch (error) {
-            console.log("AsyncStorage error: " + error);
         }
     }
 
     registerBikes() {
         var parent = this;
-        if (parent.state.isLoading) {
-            <Container style={styles.container}>
-                <Spinner color="blue"/>
-            </Container>;
-        }
-        if (parent.state.isCheck) {
-            var qs = require("qs");
-            axios.post("/bike/register",
-                qs.stringify({
-                    lat: parent.state.location.coords.latitude,
-                    long: parent.state.location.coords.longitude,
-                    qr_code: parent.state.bikesID
-                })
+        var qs = require("qs");
+        axios.post("/bike/register",
+            qs.stringify({
+                lat: parent.state.location.coords.latitude,
+                long: parent.state.location.coords.longitude,
+                qr_code: parent.state.bikesID
+            })
+        )
+            .then(function (response) {
+                isCheck=false;
+                console.log("response=", response);
+                if (response.data.status == 200) {
+                    console.log("msg=", response.data.msg);
+                    Alert.alert(
+                        'Đăng ký thành công',
+                        'Bạn đã đăng ký xe thành công và nhấn vào nút mở khóa trên xe để có thể mở khóa xe'
                     )
-                .then(function (response) {
                     parent.setState({
-                        isCheck: false
+                        isLoading: false
                     });
-                    console.log("response=", response);
-                    if (response.data.status == 200) {
-                        console.log("msg=", response.data.msg);
-                        Alert.alert(
-                            'Đăng ký thành công',
-                            'Bạn đã đăng ký xe thành công và nhấn vào nút mở khóa trên xe để có thể mở khóa xe'
-                        )
-                        parent.setState({
-                            isLoading: false
-                        });
-                    } else {
-                        Alert.alert('Đăng ký thất bại',
-                            response.data.msg,
-                            [
-                                {
-                                    text: 'OK', onPress: () => parent.setState({
-                                    isCheck: true
-                                })
-                                },
-                            ],
-                            {cancelable: false}
-                        )
-                    }
-                })
-                .catch(function (error) {
-                    parent.setState({
-                        isCheck: false
-                    });
+                } else {
                     Alert.alert('Đăng ký thất bại',
-                        error,
+                        response.data.msg,
                         [
                             {
                                 text: 'OK', onPress: () => parent.setState({
@@ -149,27 +124,45 @@ class QRCode extends React.Component {
                         ],
                         {cancelable: false}
                     )
-                    console.log("Error fetching and parsing data", error);
+                }
+            })
+            .catch(function (error) {
+                parent.setState({
+                    isCheck: false
                 });
-        }
+                Alert.alert('Đăng ký thất bại',
+                    error,
+                    [
+                        {
+                            text: 'OK', onPress: () => parent.setState({
+                            isCheck: true
+                        })
+                        },
+                    ],
+                    {cancelable: false}
+                )
+                console.log("Error fetching and parsing data", error);
+            });
     }
 
     onChange = state => {
         this.setState(state);
     };
 
-    _renderTitleBar(){
-        return(
-            <Text style={{color:'white',textAlignVertical:'center', textAlign:'center',font:35,padding:12}}>Quét QRCode để đăng ký xe</Text>
+    _renderTitleBar() {
+        return (
+            <Text style={{color: 'white', textAlignVertical: 'center', textAlign: 'center', font: 35, padding: 12}}>Quét
+                QRCode để đăng ký xe</Text>
         );
     }
+
     _renderMenu() {
         return (
             <View/>
         )
     }
+
     barcodeReceived(data) {
-        Toast.show('Type: ' + data.type + '\nData: ' + data.data);
         var parent = this;
         parent.setState({
             bikesID: data.data
@@ -186,7 +179,7 @@ class QRCode extends React.Component {
             return <Text>No access to camera</Text>;
         } else {
             return (
-                <Container>
+                <Container style={styles.qrcode}>
                     <QRScannerView
                         rectWidth={280}
                         rectHeight={280}

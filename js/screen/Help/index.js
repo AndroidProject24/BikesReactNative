@@ -166,8 +166,8 @@ class Help extends React.PureComponent {
           </Left>
           
           <Segment style={styles.body}>
-          <Button transparent first active={this.state.tab1} onPress={() => this._onPressHelpApp()}><Text style={{width: 100,color:"#000000",fontSize:14}} >App</Text></Button>
-          <Button transparent last active active={this.state.tab2} onPress={() => this._onPressHelpGuide()}><Text style={{width:100,color:"#000000",fontSize:14}} >Guide</Text></Button>
+          <Button first active={this.state.tab1} onPress={() => this._onPressHelpApp()}><Text>    App   </Text></Button>
+          <Button last active active={this.state.tab2} onPress={() => this._onPressHelpGuide()}><Text>  Guide    </Text></Button>
         </Segment>
         </Header>
 

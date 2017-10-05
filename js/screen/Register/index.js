@@ -88,7 +88,7 @@ class Register extends Component {
                     parent.setState({
                         isLoading: false
                     });
-                   // parent._onPressHome();
+                    parent._onPressLogin();
                 } else {
                     console.log("renderErrorView", response.data.msg);
                     Toast.show({text: response.data.msg, position: 'top', duration: 2000})

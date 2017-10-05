@@ -104,6 +104,12 @@ export default class TabOne extends Component {
                                 data: response.data,
                                 schoolID: response.data.school_id
                             });
+                            if(response.data.school_id==null) {
+                                parent.setState({
+                                    schoolName: "null",
+                                    isLoading: false
+                                });
+                            }
                         } else {
                             Toast.show({text: "Lấy dữ liệu bị lỗi!", position: 'top', duration: 2000});
                             console.log("Parse Error");
