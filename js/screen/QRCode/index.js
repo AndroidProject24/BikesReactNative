@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {AsyncStorage, Alert, View, DeviceEventEmitter} from "react-native";
+import React, { Component } from "react";
+import { AsyncStorage, Alert, View, DeviceEventEmitter } from "react-native";
 import {
     Spinner,
     Container,
@@ -16,12 +16,11 @@ import {
 } from "native-base";
 import styles from "./styles";
 import axios from "axios";
-import {QRScannerView} from 'ac-qrcode';
+import { QRScannerView } from 'ac-qrcode';
 import api from "../../../utilities/Api";
-
+import { RNLocation as Location } from 'NativeModules'
 const Permissions = require('react-native-permissions');
 var isCheck = true;
-//import { RNLocation as Location } from 'NativeModules'
 
 class QRCode extends React.Component {
     state = {
@@ -52,14 +51,14 @@ class QRCode extends React.Component {
 
     }
 
-    // componentWillMount() {
-    //     Location.requestAlwaysAuthorization();
-    //     Location.startUpdatingLocation();
-    //     Location.setDistanceFilter(5.0);
-    //     DeviceEventEmitter.addListener('locationUpdated', (location) => {
-    //         this.setState({'location':location})
-    //     })
-    // }
+    componentWillMount() {
+        // Location.requestAlwaysAuthorization();
+        // Location.startUpdatingLocation();
+        // Location.setDistanceFilter(5.0);
+        DeviceEventEmitter.addListener('locationUpdated', (location) => {
+            this.setState({ 'location': location })
+        })
+    }
 
     componentDidMount() {
         Permissions.checkMultiple(['camera', 'location'])
@@ -69,11 +68,10 @@ class QRCode extends React.Component {
                     locationPermission: response.location
                 })
             });
-        //this.onSubmit();
     }
 
     async onSubmit() {
-        if (isCheck==true) {
+        if (isCheck == true) {
             try {
                 var accessToken = await AsyncStorage.getItem("Token");
                 if (accessToken != null) {
@@ -101,7 +99,7 @@ class QRCode extends React.Component {
             })
         )
             .then(function (response) {
-                isCheck=false;
+                isCheck = false;
                 console.log("response=", response);
                 if (response.data.status == 200) {
                     console.log("msg=", response.data.msg);
@@ -118,11 +116,11 @@ class QRCode extends React.Component {
                         [
                             {
                                 text: 'OK', onPress: () => parent.setState({
-                                isCheck: true
-                            })
+                                    isCheck: true
+                                })
                             },
                         ],
-                        {cancelable: false}
+                        { cancelable: false }
                     )
                 }
             })
@@ -135,11 +133,11 @@ class QRCode extends React.Component {
                     [
                         {
                             text: 'OK', onPress: () => parent.setState({
-                            isCheck: true
-                        })
+                                isCheck: true
+                            })
                         },
                     ],
-                    {cancelable: false}
+                    { cancelable: false }
                 )
                 console.log("Error fetching and parsing data", error);
             });
@@ -151,14 +149,14 @@ class QRCode extends React.Component {
 
     _renderTitleBar() {
         return (
-            <Text style={{color: 'white', textAlignVertical: 'center', textAlign: 'center', font: 35, padding: 12}}>Quét
+            <Text style={{ color: 'white', textAlignVertical: 'center', textAlign: 'center', font: 35, padding: 12 }}>Quét
                 QRCode để đăng ký xe</Text>
         );
     }
 
     _renderMenu() {
         return (
-            <View/>
+            <View />
         )
     }
 
@@ -172,7 +170,7 @@ class QRCode extends React.Component {
     }
 
     render() {
-        const {hasCameraPermission} = this.state;
+        const { hasCameraPermission } = this.state;
         if (hasCameraPermission === null) {
             return <Text>Không có quyền truy cập Camera.</Text>;
         } else if (hasCameraPermission === false) {

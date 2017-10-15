@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import { FlatList,AsyncStorage,TouchableOpacity,Keyboard,Image, View, StatusBar } from "react-native";
+import { FlatList, AsyncStorage, TouchableOpacity, Keyboard, Image, View, StatusBar } from "react-native";
 
-import { Spinner, Container,Toast, Header,Title,Content,Text,H3,Button,Icon,Footer,FooterTab,Left,Right,Body } from "native-base";
+import { Spinner, Container, Toast, Header, Title, Content, Text, H3, Button, Icon, Footer, FooterTab, Left, Right, Body } from "native-base";
 
 import styles from "./styles";
 import axios from "axios";
 import PropTypes from "prop-types";
-import api from"../../../utilities/Api";
+import api from "../../../utilities/Api";
 import ImageLoad from 'react-native-image-placeholder';
 
 class Garage extends React.PureComponent {
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       tab1: false,
@@ -28,7 +28,7 @@ class Garage extends React.PureComponent {
     this.renderItem = this._renderItem.bind(this);
     this.onChange = this.onChange.bind(this);
   }
-  
+
   componentWillMount() {
     this._loadInitialState().done();
   }
@@ -49,7 +49,7 @@ class Garage extends React.PureComponent {
               Authorization2: "XeDap " + accessToken
             }
           })
-          .then(function(response) {
+          .then(function (response) {
             if (response.status == 200) {
               parent.setState({
                 data: response.data.msg,
@@ -62,7 +62,7 @@ class Garage extends React.PureComponent {
               console.log("Parse Error");
             }
           })
-          .catch(function(error) {
+          .catch(function (error) {
             parent.setState({
               error: true,
               errorInfo: error
@@ -117,15 +117,15 @@ class Garage extends React.PureComponent {
         <Container style={styles.card}>
           <Left>
             <ImageLoad
-            rkCardImg
-            isShowActivity = {false}
-            style={{ width: 80, height: 80,margin:10 }}
-            source={{ uri: `http://demo.easymove.vn/images/${item.image}` }}
+              rkCardImg
+              isShowActivity={false}
+              style={{ width: 80, height: 80, margin: 10 }}
+              source={{ uri: `http://demo.easymove.vn/images/${item.image}` }}
             />
           </Left>
           <Body>
             <View>
-                <Text
+              <Text
                 numberOfLines={1}
                 style={styles.title}
                 allowFontScaling={false}>
@@ -135,25 +135,25 @@ class Garage extends React.PureComponent {
                 numberOfLines={1}
                 style={styles.summary}
                 allowFontScaling={false}>
-                  Số lượng xe:
+                Số lượng xe:
                   <Text style={styles.summary}
                   allowFontScaling={false}>
-                  {item.max_bike+" "}
-                  </Text>
+                  {item.max_bike + " "}
                 </Text>
-              </View>
+              </Text>
+            </View>
           </Body>
-           <Right>
+          <Right>
             <Text
               numberOfLines={1}
               style={styles.summary2}
               allowFontScaling={false}>
-                Đang gửi:
+              Đang gửi:
                 <Text style={styles.summary2}
                 allowFontScaling={false}>
-                {item.bikes+" "}
-                </Text>
+                {item.bikes + " "}
               </Text>
+            </Text>
           </Right>
         </Container>
       </TouchableOpacity>
@@ -175,77 +175,77 @@ class Garage extends React.PureComponent {
 
     axios.get(`http://demo.easymove.vn/api/news?page=${page}`)
       .then(response => {
-        console.log('response=',response.msg);
-        if (response.msg !=null) {
+        console.log('response=', response.msg);
+        if (response.msg != null) {
           this.setState({
-                  data: this.state.data.concat(response),
-                  isLoading:false
-              });
+            data: this.state.data.concat(response),
+            isLoading: false
+          });
         } else {
           //Toast.show({text: "Hết dữ liệu!",position: 'top',duration: 2000})
           console.log('not page');
         }
       }).catch(err => {
-        Toast.show({text: err,position: 'top',duration: 2000})
+        Toast.show({ text: err, position: 'top', duration: 2000 })
         console.log('next page', err); // eslint-disable-line
       });
-   }
-   renderProgress = () => {
-       if (!this.state.isLoading) return null;
-       return (
-         <View style={styles.progressBar}>
-              <Spinner color="blue"/>
-         </View>
-       );
-     };
+  }
+  renderProgress = () => {
+    if (!this.state.isLoading) return null;
+    return (
+      <View style={styles.progressBar}>
+        <Spinner color="blue" />
+      </View>
+    );
+  };
   render() {
     if (this.state.isLoading && !this.state.error) {
       return this.renderProgress();
     } else if (this.state.error) {
-      return Toast.show({text: this.state.errorInfo,position: 'top',duration: 2000});
+      return Toast.show({ text: this.state.errorInfo, position: 'top', duration: 2000 });
     }
     return (
       <Container style={styles.container}>
-      <StatusBar barStyle="light-content" />
-        <Header style={{backgroundColor: "transparent"}}>
+        <StatusBar barStyle="light-content" />
+        <Header style={{ backgroundColor: '#EF6530' }}>
           <Left>
             <Button
               transparent
-              onPress={() => this.props.navigation.navigate("DrawerOpen")}>
-              <Icon style={{color: "#FFFF"}} name="ios-menu" />
+              onPress={() => this.props.navigation.goBack()}>
+              <Icon style={{ color: "#FFFF" }} name="arrow-back" />
             </Button>
           </Left>
           <Body>
-            <Title style={{color: "#FFFF"}}>Nhà xe</Title>
+            <Title style={{ color: "#FFFF" }}>Nhà xe</Title>
           </Body>
           <Right>
-          <Button transparent onPress={() => this.tabCamera()}>
-            <Icon style={{color: "#FFFF"}} name="camera" />
-          </Button>
-        </Right>
+            <Button transparent onPress={() => this.tabCamera()}>
+              <Icon style={{ color: "#FFFF" }} name="camera" />
+            </Button>
+          </Right>
 
         </Header>
 
         <Content padder>
-        <FlatList
-          style={styles.root}
-          data={this.state.data}
-          extraData={this.state}
-          ItemSeparatorComponent={this._renderSeparator}
-          keyExtractor={this._keyExtractor}
-          renderItem={({ item }) => this.renderItem(item)}
-          removeClippedSubviews={true}
-          ListFooterComponent={this.renderProgress}
-          onEndReachedThreshold={0.4}
-          onEndReached={({ distanceFromEnd }) => {
-             console.log("onEndReached");
-             this.loadMore();
-          }}/>
+          <FlatList
+            style={styles.root}
+            data={this.state.data}
+            extraData={this.state}
+            ItemSeparatorComponent={this._renderSeparator}
+            keyExtractor={this._keyExtractor}
+            renderItem={({ item }) => this.renderItem(item)}
+            removeClippedSubviews={true}
+            ListFooterComponent={this.renderProgress}
+            onEndReachedThreshold={0.4}
+            onEndReached={({ distanceFromEnd }) => {
+              console.log("onEndReached");
+              this.loadMore();
+            }} />
         </Content>
       </Container>
     );
   }
-  
+
   tabCamera() {
     this.props.navigation.navigate("QRCode");
   }

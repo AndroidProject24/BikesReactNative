@@ -7,26 +7,26 @@ import {
     Text,
     StyleSheet
 } from 'react-native'
-import {primary} from '../themes/colors';
+import { primary } from '../themes/colors';
 export default class Toolbar extends Component {
 
     constructor(props) {
         super(props);
     }
     actionLeft = () => {
-      if(this.props.iconLeft){
-        if (this.props.actionLeft) {
-            this.props.actionLeft();
-        } else {
-            this.props.navigation.goBack();
+        if (this.props.iconLeft) {
+            if (this.props.actionLeft) {
+                this.props.actionLeft();
+            } else {
+                this.props.navigation.goBack();
+            }
         }
-      }
     }
-    actionRight = ()=>{
-      if(this.props.iconRight){
+    actionRight = () => {
+        if (this.props.iconRight) {
             this.props.actionRight();
-        
-      }
+
+        }
     }
     render() {
         return (
@@ -45,17 +45,17 @@ export default class Toolbar extends Component {
                     }
                 </TouchableOpacity>
                 {
-                  this.props.title ? 
-                  <Text style={styles.toolbarTitle} >{this.props.title}</Text>
-                : <Image 
-                  tintColor='white'                   
-                  style={styles.logo}
-                  source={this.props.logo}
-                  resizeMode='contain'/>
+                    this.props.title ?
+                        <Text style={styles.toolbarTitle} >{this.props.title}</Text>
+                        : <Image
+                            tintColor='white'
+                            style={styles.logo}
+                            source={this.props.logo}
+                            resizeMode='contain' />
                 }
                 <TouchableOpacity
                     style={{ width: 50, height: 50, justifyContent: 'center', alignItems: 'center' }}
-                    onPress={ this.actionRight}>
+                    onPress={this.actionRight}>
                     {this.props.iconRight ?
                         <Image
                             tintColor='white'
@@ -73,7 +73,7 @@ export default class Toolbar extends Component {
 
 const styles = StyleSheet.create({
     toolbar: {
-        backgroundColor : primary,
+        backgroundColor: primary,
         justifyContent: 'space-between',
         flexDirection: 'row',
         alignItems: 'center',
@@ -87,14 +87,15 @@ const styles = StyleSheet.create({
     },
     toolbarTitle: {
         color: 'white',
-        fontSize: 16,
+        fontSize: 18,
+        fontWeight: 'bold',
     },
     toolbarRight: {
         width: 20,
         height: 20,
     },
     logo: {
-      height: 56, 
-      width: 100,
+        height: 56,
+        width: 100,
     }
 });

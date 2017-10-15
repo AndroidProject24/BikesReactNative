@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { FlatList,AsyncStorage,TouchableOpacity,Keyboard,Image, View, StatusBar } from "react-native";
-import { Spinner, Container,Toast, Header,Title,Content,Text,H3,Button,Icon,Footer,FooterTab,Left,Right,Body } from "native-base";
+import { FlatList, AsyncStorage, TouchableOpacity, Keyboard, Image, View, StatusBar } from "react-native";
+import { Spinner, Container, Toast, Header, Title, Content, Text, H3, Button, Icon, Footer, FooterTab, Left, Right, Body } from "native-base";
 
 import styles from "./styles";
 import axios from "axios";
 import PropTypes from "prop-types";
-import api from"../../../utilities/Api";
+import api from "../../../utilities/Api";
 
 class History extends React.PureComponent {
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       isLoading: true,
@@ -27,28 +27,28 @@ class History extends React.PureComponent {
   }
 
   render() {
-     if (this.state.error) {
-      return Toast.show({text: this.state.errorInfo,position: 'top',duration: 2000});
+    if (this.state.error) {
+      return Toast.show({ text: this.state.errorInfo, position: 'top', duration: 2000 });
     }
     return (
-     <Container style={styles.container}>
-      <StatusBar barStyle="light-content" />
-        <Header style={{backgroundColor: "#3c5b94"}}>
+      <Container style={styles.container}>
+        <StatusBar barStyle="light-content" />
+        <Header style={{ backgroundColor: '#EF6530' }}>
           <Left>
             <Button
               transparent
-              onPress={() => this.props.navigation.navigate("DrawerOpen")}>
-              <Icon style={{color: "#FFFF"}} name="ios-menu" />
+              onPress={() => this.props.navigation.goBack()}>
+              <Icon style={{ color: "#FFFF" }} name="iarrow-back" />
             </Button>
           </Left>
           <Body>
-            <Title style={{color: "#FFFF"}}>Thống kê</Title>
+            <Title style={{ color: "#FFFF" }}>Thống kê</Title>
           </Body>
-          <Right/>
+          <Right />
         </Header>
         <Content padder style={styles.imageContainer}>
-            <H3 style={{color: "#3c5b94"}}>
-              Tính năng đang cập nhật
+          <H3 style={{ color: "#3c5b94" }}>
+            Tính năng đang cập nhật
             </H3>
         </Content>
       </Container>

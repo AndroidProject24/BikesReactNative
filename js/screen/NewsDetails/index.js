@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {AsyncStorage, ScrollView, Dimensions, Keyboard, Image, View, StatusBar} from "react-native";
+import React, { Component } from "react";
+import { AsyncStorage, ScrollView, Dimensions, Keyboard, Image, View, StatusBar } from "react-native";
 import {
     Spinner,
     Container,
@@ -50,7 +50,7 @@ class NewsDetails extends React.Component {
                         headers: {
                             Accept: "application/json",
                             "Content-Type":
-                                "application/x-www-form-urlencoded; charset=UTF-8",
+                            "application/x-www-form-urlencoded; charset=UTF-8",
                             Authorization: api.KEY,
                             Authorization2: "XeDap " + accessToken
                         }
@@ -63,7 +63,7 @@ class NewsDetails extends React.Component {
                                 isLoading: false
                             });
                         } else {
-                            Toast.show({text: "Lấy dữ liệu bị lỗi!", position: 'top', duration: 2000})
+                            Toast.show({ text: "Lấy dữ liệu bị lỗi!", position: 'top', duration: 2000 })
                             console.log("Parse Error");
                         }
                     })
@@ -72,7 +72,7 @@ class NewsDetails extends React.Component {
                             error: true,
                             errorInfo: error
                         });
-                        Toast.show({text: error, position: 'top', duration: 2000})
+                        Toast.show({ text: error, position: 'top', duration: 2000 })
                         console.log("Error fetching and parsing data", error);
                     });
             }
@@ -89,24 +89,24 @@ class NewsDetails extends React.Component {
         if (this.state.isLoading && !this.state.error) {
             return (
                 <View style={styles.progressBar}>
-                    <Spinner color="blue"/>
+                    <Spinner color="blue" />
                 </View>
             );
         } else if (this.state.error) {
-            return Toast.show({text: "Lấy dữ liệu bị lỗi!", position: 'top', duration: 2000});
+            return Toast.show({ text: "Lấy dữ liệu bị lỗi!", position: 'top', duration: 2000 });
         }
         return (
             <Container style={styles.container}>
-                <Header>
+                <Header style={{ backgroundColor: '#EF6530' }}>
                     <Left>
                         <Button transparent onPress={() => this.props.navigation.goBack()}>
-                            <Icon name="arrow-back"/>
+                            <Icon name="arrow-back" />
                         </Button>
                     </Left>
                     <Body>
-                    <Title style={styles.titleToolbar}>{this.state.data.title}</Title>
+                        <Title style={styles.titleToolbar}>{this.state.data.title}</Title>
                     </Body>
-                    <Right/>
+                    <Right />
                 </Header>
                 <Content padder>
                     <H3 style={styles.title}>

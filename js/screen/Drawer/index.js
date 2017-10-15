@@ -9,8 +9,7 @@ import Help from "../Help";
 import News from "../News";
 import Exit from "../Exit";
 import Garage from "../Garage";
-import GarageDetails from "../GarageDetails";
-import Notification from "../Notification";
+import About from "../About";
 import Profile from "../Profile";
 import QRCode from "../QRCode";
 import Tab from "../Tab";
@@ -48,6 +47,7 @@ const newsNavOptions = getDrawerNavigationOptions('Tin tức', Colors.primary, '
 const garageNavOptions = getDrawerNavigationOptions('Nhà xe', Colors.primary, 'white',garageDrawerIcon);
 const registerNavOptions = getDrawerNavigationOptions('Đăng ký', Colors.primary, 'white', registerDrawerIcon);
 const profileNavOptions = getDrawerNavigationOptions('Profile', Colors.primary, 'white', profileDrawerIcon);
+const aboutNavOptions = getDrawerNavigationOptions('Giới thiệu', Colors.primary, 'white', userDrawerIcon);
 const exitNavOptions = getDrawerNavigationOptions('Thoát', Colors.primary, 'white', exitDrawerIcon);
 
 export const Drawer = DrawerNavigator({
@@ -58,6 +58,8 @@ export const Drawer = DrawerNavigator({
    QRCode: { screen: QRCode, navigationOptions: registerNavOptions },
    Profile: { screen: Profile, navigationOptions: profileNavOptions },
    Help: { screen: Help, navigationOptions: userNavOptions },
+   About: { screen: About, navigationOptions: aboutNavOptions },
+
   //Exit: { screen: Exit, navigationOptions: exitNavOptions },
 }, getDrawerConfig(300, 'left', 'Tab'));
 

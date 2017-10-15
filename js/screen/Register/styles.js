@@ -1,48 +1,70 @@
 const React = require("react-native");
 
-const {StyleSheet, Dimensions, Platform} = React;
+const { Dimensions, Platform } = React;
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 export default {
-    content: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: "#3c5b94"
-    },
-    messageBox: {},
-    imageContainer: {
-        backgroundColor: "#3c5b94",
+    root: {
+        backgroundColor: "#FFF",
         flex: 1,
         width: null,
         height: null
     },
-    logoContainer: {
-        marginTop: deviceHeight / 8,
-        flex: 1,
+    imageContainer: {
+        flex: 0.1,
+        height: 120,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    container: {
+        width: deviceWidth / 2,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    content: {
+        marginLeft: 30,
+        marginRight: 30,
+        flex: 2,
         flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
-    logo: {
+    buttonRegister: {
+        backgroundColor: "#f26422",
+        width: '100%',
+        height: 40,
+        marginTop: 30,
+        borderRadius: 10,
+        justifyContent: 'center'
+    },
+    textLogin: {
+        fontWeight: 'bold',
+        marginLeft: 240,
+        color: "#f26422",
+        marginTop: 10,
+        marginBottom: 10,
+        padding: 5,
+    },
+    logoTop: {
         marginTop: Platform.OS === "android" ? 10 : 60,
-        width: 153,
-        height: 164
+        width: 260,
+        resizeMode: 'center'
     },
-    text: {
-        color: "#D8D8D8",
-        bottom: 6,
-        marginTop: 5
+    logoBottom: {
+        width: deviceWidth,
+        height: deviceWidth / 1.5,
+        resizeMode: 'stretch'
     },
     card: {
         backgroundColor: "transparent",
+        marginLeft: 50,
         flexDirection: "row",
         justifyContent: 'center',
         alignItems: 'center'
     },
     textSex: {
         marginTop: 10,
-        width: (Platform.OS === 'ios')?120: deviceWidth/3,
+        width: (Platform.OS === 'ios') ? 120 : deviceWidth / 3,
         flexDirection: "row",
     }
 };

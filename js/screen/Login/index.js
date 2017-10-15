@@ -1,17 +1,16 @@
 import React, {Component} from "react";
-import {AsyncStorage, TouchableOpacity, Keyboard, Image, View, StatusBar} from "react-native";
+import {AsyncStorage, Image, View, StatusBar, KeyboardAvoidingView} from "react-native";
 import {Spinner, Container, Button, H3, Toast, Text, Item, Input} from "native-base";
 import styles from "./styles";
 import axios from "axios";
-import PropTypes from "prop-types";
 import api from "../../../utilities/Api";
 import {connect} from 'react-redux';
 import * as ducks from '../../../js/utils/ducks';
 import {getNavigationOptions} from '../../../js/utils/navigation';
 import * as Colors from '../../themes/colors';
 
-const launchscreenBg = require("../../../assets/images/bg_login.jpg");
-const launchscreenLogo = require("../../../assets/images/logo2.png");
+const icon_bottom = require("../../../assets/images/bg_login.png");
+const icon_top = require("../../../assets/images/icon_login.png");
 
 class Login extends Component {
     constructor(props) {
@@ -50,7 +49,7 @@ class Login extends Component {
             })
         )
             .then(function (response) {
-                console.log("response=",response.data);
+                console.log("response=", response.data);
                 if (response.data.status == 200 && response.data.token != null) {
                     console.log("msg=", response.data.token);
                     parent.setState({
@@ -93,58 +92,45 @@ class Login extends Component {
 
     render() {
         return (
-            <Container>
-                <StatusBar barStyle="light-content"/>
-                <View style={styles.imageContainer}>
-                    <View style={styles.content}>
-                        <View style={styles.messageBox}>
-                            <Image source={launchscreenLogo} style={styles.logo}/>
+            <KeyboardAvoidingView style={styles.root}>
+                <Container>
+                    <StatusBar barStyle="light-content"/>
+                    <View style={styles.root}>
+                        <View style={styles.imageContainer}>
+                            <Image source={icon_top} style={styles.logoTop}/>
+                        </View>
+
+                        <View style={styles.content}>
+                            <Button style={styles.buttonLogin} onPress={() => this.onSubmit()}>
+                                <Text style={{color: "#FFF"}}>Đăng nhập</Text>
+                            </Button>
+                            <Item>
+                                <Input style={{color: "#000"}} placeholder="User name/Phone number:"
+                                       placeholderTextColor="#000"
+                                       textColor="#000"
+                                       value={this.state.username}
+                                       onChangeText={text => this.setState({username: text})}/>
+                            </Item>
+                            <Item>
+                                <Input secureTextEntry={true} style={{color: "#000"}} placeholder="Password:"
+                                       placeholderTextColor="#000"
+                                       value={this.state.password}
+                                       onChangeText={text => this.setState({password: text})}/>
+                            </Item>
+
+                            <Text style={styles.textForget}
+                                  onPress={() => this._onPressForgetPass()}>Quên password?</Text>
+                            <Text style={styles.textRegister}>Bạn chưa có tài khoản?</Text>
+                            <Button style={styles.buttonRegister} onPress={() => this._onPressSignUp()}>
+                                <Text style={{color: "#FFF"}}>Đăng ký </Text>
+                            </Button>
+                        </View>
+                        <View style={styles.imageContainerBottom}>
+                            <Image source={icon_bottom} style={styles.logoBottom}/>
                         </View>
                     </View>
-
-                    <View style={{
-                        flex: 1.8,
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        margin: 30
-                    }}>
-
-                        <Item>
-                            <Input style={{color: "#FFF"}} placeholder="Tài khoản" placeholderTextColor="#FFFFFF"
-                                   textColor="#FFFFFF"
-                                   value={this.state.username}
-                                   onChangeText={text => this.setState({username: text})}/>
-                        </Item>
-                        <Item>
-                            <Input secureTextEntry={true} style={{color: "#FFF"}} placeholder="Mật khẩu"
-                                   placeholderTextColor="#FFFFFF"
-                                   value={this.state.password}
-                                   onChangeText={text => this.setState({password: text})}/>
-                        </Item>
-
-                        <Button style={{
-                            backgroundColor: "#4e699e", width: '100%', marginTop: 30, justifyContent: 'center',
-                            alignItems: 'center'
-                        }}
-                                onPress={() => this.onSubmit()}>
-                            <Text>Đăng nhập</Text>
-                        </Button>
-                        <Text style={{backgroundColor: "transparent", color: "#FFFFFF", marginTop: 10}}
-                              onPress={() => this._onPressForgetPass()}>Quên mật khẩu?</Text>
-                        <Button bordered
-                                style={{
-                                    backgroundColor: "transparent",
-                                    width: '100%',
-                                    marginTop: 30,
-                                    justifyContent: 'center',
-                                    alignItems: 'center'
-                                }}
-                                onPress={() => this._onPressSignUp()}>
-                            <Text style={{color: "#FFFFFF"}}>Đăng ký </Text>
-                        </Button>
-                    </View>
-                </View>
-            </Container>
+                </Container>
+            </KeyboardAvoidingView>
         );
     }
 }

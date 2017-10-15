@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import { FlatList,AsyncStorage,TouchableOpacity,Keyboard,Image, View, StatusBar } from "react-native";
+import { FlatList, AsyncStorage, TouchableOpacity, Keyboard, Image, View, StatusBar } from "react-native";
 
-import { Spinner, Container,Toast, Header,Title,Content,Text,H3,Button,Icon,Footer,FooterTab,Left,Right,Body } from "native-base";
+import { Spinner, Container, Toast, Header, Title, Content, Text, H3, Button, Icon, Footer, FooterTab, Left, Right, Body } from "native-base";
 
 import styles from "./styles";
 import axios from "axios";
 import PropTypes from "prop-types";
-import api from"../../../utilities/Api";
+import api from "../../../utilities/Api";
 import ImageLoad from 'react-native-image-placeholder';
 
 class Notification extends React.PureComponent {
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       tab1: true,
@@ -28,7 +28,7 @@ class Notification extends React.PureComponent {
     this.renderItem = this._renderItem.bind(this);
     this.onChange = this.onChange.bind(this);
   }
-  
+
   componentWillMount() {
     this._loadInitialState().done();
   }
@@ -43,12 +43,12 @@ class Notification extends React.PureComponent {
             headers: {
               Accept: "application/json",
               "Content-Type":
-                "application/x-www-form-urlencoded; charset=UTF-8",
+              "application/x-www-form-urlencoded; charset=UTF-8",
               Authorization: api.KEY,
               Authorization2: "XeDap " + accessToken
             }
           })
-          .then(function(response) {
+          .then(function (response) {
             if (response.status == 200) {
               parent.setState({
                 data: response.data.msg,
@@ -57,17 +57,17 @@ class Notification extends React.PureComponent {
             } else if (response.status == 403) {
               AsyncStorage.setItem("Token", "null");
               this.props.navigation.navigate("Login");
-              Toast.show({text: "Mời đăng nhập lại!",position: 'top',duration: 2000})
+              Toast.show({ text: "Mời đăng nhập lại!", position: 'top', duration: 2000 })
             } else {
               console.log("Parse Error");
             }
           })
-          .catch(function(error) {
+          .catch(function (error) {
             parent.setState({
               error: true,
               errorInfo: error
             });
-            Toast.show({text:error,position: 'top',duration: 2000})
+            Toast.show({ text: error, position: 'top', duration: 2000 })
             console.log("Error fetching and parsing data", error);
           });
       }
@@ -112,14 +112,14 @@ class Notification extends React.PureComponent {
         activeOpacity={0.8}
         onPress={() => this._onPressButton(item.id, item.title)}>
         <Container style={styles.card}>
-            <ImageLoad
+          <ImageLoad
             rkCardImg
-            isShowActivity = {false}
-            style={{ width: 80, height: 80,margin:10 }}
+            isShowActivity={false}
+            style={{ width: 80, height: 80, margin: 10 }}
             source={{ uri: `http://demo.easymove.vn/images/${item.image}` }}
-            />
-            <Body>
-              <Text
+          />
+          <Body>
+            <Text
               numberOfLines={2}
               style={styles.title}
               allowFontScaling={false}>
@@ -131,7 +131,7 @@ class Notification extends React.PureComponent {
               allowFontScaling={false}>
               {item.summary}
             </Text>
-           </Body>
+          </Body>
         </Container>
       </TouchableOpacity>
     );
@@ -152,71 +152,71 @@ class Notification extends React.PureComponent {
 
     axios.get(`http://demo.easymove.vn/api/news?page=${page}`)
       .then(response => {
-        console.log('response=',response.msg);
-        if (response.msg !=null) {
+        console.log('response=', response.msg);
+        if (response.msg != null) {
           this.setState({
-                  data: this.state.data.concat(response),
-                  isLoading:false
-              });
+            data: this.state.data.concat(response),
+            isLoading: false
+          });
         } else {
-          Toast.show({text: "Hết dữ liệu!",position: 'top',duration: 2000})
+          Toast.show({ text: "Hết dữ liệu!", position: 'top', duration: 2000 })
           console.log('not page');
         }
       }).catch(err => {
-        Toast.show({text: err,position: 'top',duration: 2000})
+        Toast.show({ text: err, position: 'top', duration: 2000 })
         console.log('next page', err); // eslint-disable-line
       });
-   }
-   renderProgress = () => {
-       if (!this.state.isLoading) return null;
-       return (
-         <View style={styles.progressBar}>
-              <Spinner color="blue"/>
-         </View>
-       );
-     };
+  }
+  renderProgress = () => {
+    if (!this.state.isLoading) return null;
+    return (
+      <View style={styles.progressBar}>
+        <Spinner color="blue" />
+      </View>
+    );
+  };
   render() {
     if (this.state.isLoading && !this.state.error) {
       return this.renderProgress();
     } else if (this.state.error) {
-      return Toast.show({text: this.state.errorInfo,position: 'top',duration: 2000});
+      return Toast.show({ text: this.state.errorInfo, position: 'top', duration: 2000 });
     }
     return (
       <Container style={styles.container}>
-      <StatusBar barStyle="light-content" />
-        <Header style={{backgroundColor: "transparent"}}>
+        <StatusBar barStyle="light-content" />
+        <Header style={{ backgroundColor: '#EF6530' }}>
           <Left>
             <Button
               transparent
-              onPress={() => this.props.navigation.navigate("DrawerOpen")}>
-              <Icon style={{color: "#FFFF"}} name="ios-menu" />
+              onPress={() => this.props.navigation.goBack()}>
+              <Icon style={{ color: "#FFFF" }} name="arrow-back" />
             </Button>
           </Left>
           <Body>
-            <Title style={{color: "#FFFF"}}>Thông báo</Title>
+            <Title style={{ color: "#FFFF" }}>Thông báo</Title>
           </Body>
           <Right transparent>
-          <Button onPress={() => this.tabQRCode()}>
-            <Icon name="camera" />
-          </Button>
-        </Right>
+            <Button onPress={() => this.tabQRCode()}>
+              <Icon name="camera" />
+            </Button>
+          </Right>
         </Header>
 
         <Content padder>
-        <FlatList
-          style={styles.root}
-          data={this.state.data}
-          extraData={this.state}
-          ItemSeparatorComponent={this._renderSeparator}
-          keyExtractor={this._keyExtractor}
-          renderItem={({ item }) => this.renderItem(item)}
-          removeClippedSubviews={true}
-          ListFooterComponent={this.renderProgress}
-          onEndReachedThreshold={0.4}
-          onEndReached={({ distanceFromEnd }) => {
-             console.log("onEndReached");
-             this.loadMore();
-          }}/>
+          <FlatList
+            style={styles.root}
+            data={this.state.data}
+            extraData={this.state}
+            ItemSeparatorComponent={this._renderSeparator}
+            keyExtractor={this._keyExtractor}
+            renderItem={({ item }) => this.renderItem(item)}
+            removeClippedSubviews={true}
+            ListFooterComponent={this.renderProgress}
+            onEndReachedThreshold={0.4}
+            onEndReached={({ distanceFromEnd }) => {
+              console.log("onEndReached");
+              this.loadMore();
+            }} />
         </Content>
       </Container>
     );

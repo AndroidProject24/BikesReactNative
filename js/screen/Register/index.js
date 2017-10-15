@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {AsyncStorage, TouchableOpacity, Platform, Image, View, StatusBar} from "react-native";
+import React, { Component } from "react";
+import { ScrollView, Image, View } from "react-native";
 import {
     Spinner,
     Container,
@@ -11,8 +11,6 @@ import {
     H3,
     Button,
     Icon,
-    Footer,
-    FooterTab,
     Left,
     CheckBox,
     ListItem,
@@ -23,13 +21,11 @@ import {
 } from "native-base";
 import styles from "./styles";
 import axios from "axios";
-import PropTypes from "prop-types";
 import api from "../../../utilities/Api";
+import { primary } from '../../themes/colors';
+const icon_logo = require("../../../assets/images/icon_login.png");
 
-const launchscreenBg = require("../../../assets/images/bg_login.jpg");
-const launchscreenLogo = require("../../../assets/images/logo2.png");
-
-class Register extends Component {
+class Register extends React.PureComponent {
     static navigationOptions = {
         header: null
     };
@@ -65,10 +61,10 @@ class Register extends Component {
         var parent = this;
         if (parent.state.isLoading && !parent.state.error) {
             <View style={styles.container}>
-                <Spinner color="blue"/>
+                <Spinner color="blue" />
             </View>;
         } else if (parent.state.error) {
-            Toast.show({text: parent.state.errorInfo, position: 'top', duration: 2000})
+            Toast.show({ text: parent.state.errorInfo, position: 'top', duration: 2000 })
         }
         var qs = require("qs");
         axios.post("/member/register",
@@ -84,14 +80,14 @@ class Register extends Component {
         )
             .then(function (response) {
                 if (response.data.status == 200) {
-                    Toast.show({text: response.data.msg, position: 'top', duration: 2000})
+                    Toast.show({ text: response.data.msg, position: 'top', duration: 2000 })
                     parent.setState({
                         isLoading: false
                     });
                     parent._onPressLogin();
                 } else {
                     console.log("renderErrorView", response.data.msg);
-                    Toast.show({text: response.data.msg, position: 'top', duration: 2000})
+                    Toast.show({ text: response.data.msg, position: 'top', duration: 2000 })
                 }
             })
             .catch(function (error) {
@@ -99,7 +95,7 @@ class Register extends Component {
                     error: true,
                     errorInfo: error
                 });
-                Toast.show({text: error, position: 'top', duration: 2000})
+                Toast.show({ text: error, position: 'top', duration: 2000 })
                 console.log("Error fetching and parsing data", error);
             });
     }
@@ -131,86 +127,101 @@ class Register extends Component {
     render() {
         return (
             <Container>
-                <StatusBar barStyle="light-content"/>
-                <Image source={launchscreenBg} style={styles.imageContainer}>
-                    <View style={styles.content}>
-                        <View style={styles.messageBox}>
-                            <Image source={launchscreenLogo} style={styles.logo}/>
-                        </View>
-                    </View>
-
-                    <View style={{flex: 2, flexDirection: 'column', alignItems: 'center', margin: (Platform.OS === 'ios') ? 30 : 0}}>
-                        <Content>
-                            <Item>
-                                <Input style={{color: "#FFF"}} placeholder="Họ và tên" placeholderTextColor="#FFFFFF"
-                                       textColor="#FFFFFF"
-                                       value={this.state.fullname}
-                                       onChangeText={text => this.setState({fullname: text})}/>
-                            </Item>
-                            <Item>
-                                <Input style={{color: "#FFF"}} placeholder="Tài khoản" placeholderTextColor="#FFFFFF"
-                                       textColor="#FFFFFF"
-                                       value={this.state.username}
-                                       onChangeText={text => this.setState({username: text})}/>
-                            </Item>
-                            <Item>
-                                <Input style={{color: "#FFF"}} placeholder="Email" placeholderTextColor="#FFFFFF"
-                                       textColor="#FFFFFF"
-                                       value={this.state.email}
-                                       onChangeText={text => this.setState({email: text})}/>
-                            </Item>
-                            <Item>
-                                <Input style={{color: "#FFF"}} placeholder="Điện thoại" placeholderTextColor="#FFFFFF"
-                                       textColor="#FFFFFF"
-                                       value={this.state.sdt}
-                                       onChangeText={text => this.setState({sdt: text})}/>
-                            </Item>
-                            <Item>
-                                <Input secureTextEntry={true} style={{color: "#FFF"}} placeholder="Mật khẩu"
-                                       placeholderTextColor="#FFFFFF" textColor="#FFFFFF"
-                                       value={this.state.password}
-                                       onChangeText={text => this.setState({password: text})}/>
-                            </Item>
-                            <Item>
-                                <Input secureTextEntry={true} style={{color: "#FFF"}} placeholder="Xác nhận mật khẩu"
-                                       placeholderTextColor="#FFFFFF" textColor="#FFFFFF"
-                                       value={this.state.cpassword}
-                                       onChangeText={text => this.setState({cpassword: text})}/>
-                            </Item>
-                            <View style={styles.card}>
-                                <View style={styles.textSex}>
-                                    <Body>
-                                    <Text style={{color: "#FFFFFF"}}>Nam</Text>
-                                    </Body>
-                                    <CheckBox checked={this.state.tabNam}
-                                              onPress={() => this._onPressNam()}/>
-                                </View>
-                                <View style={styles.textSex}>
-                                    <Body>
-                                    <Text style={{color: "#FFFFFF"}}>Nữ</Text>
-                                    </Body>
-                                    <CheckBox checked={this.state.tabNu}
-                                              onPress={() => this._onPressNu()}/>
-                                </View>
+                <Header>
+                    <Left>
+                        <Button transparent onPress={() => this.props.navigation.goBack()}>
+                            <Icon name="arrow-back" />
+                        </Button>
+                    </Left>
+                    <Body>
+                        <Title style={styles.titleToolbar}>Đăng ký</Title>
+                    </Body>
+                    <Right />
+                </Header>
+                <Content>
+                    <ScrollView>
+                        <View style={styles.root}>
+                            <View style={styles.imageContainer}>
+                                <Image source={icon_logo} style={styles.logoTop} />
                             </View>
-                            <Button style={{
-                                backgroundColor: "#4e699e", width: '100%', marginTop: 10, justifyContent: 'center',
-                                alignItems: 'center'
-                            }}
-                                    onPress={() => this.onSubmit()}>
-                                <Text>Đăng ký</Text>
-                            </Button>
-                            <Text style={{
-                                backgroundColor: "transparent",
-                                color: "#FFFFFF",
-                                marginLeft: 240,
-                                fontSize: 14,
-                                marginTop: 10
-                            }}
-                                  onPress={() => this._onPressLogin()}>Đăng nhập</Text>
-                        </Content>
-                    </View>
-                </Image>
+                            <View style={styles.content}>
+                                <Item>
+                                    <Input style={{ color: "#000" }} placeholder="Họ và tên:"
+                                        placeholderTextColor="#000"
+                                        textColor="#000"
+                                        value={this.state.fullname}
+                                        onChangeText={text => this.setState({ fullname: text })} />
+                                </Item>
+                                <Item>
+                                    <Input style={{ color: "#000" }} placeholder="MSVV/MSCB:"
+                                        placeholderTextColor="#000"
+                                        textColor="#000"
+                                        value={this.state.username}
+                                        onChangeText={text => this.setState({ username: text })} />
+                                </Item>
+                                <Item>
+                                    <Input style={{ color: "#000" }} placeholder="Đơn vị:"
+                                        placeholderTextColor="#000"
+                                        textColor="#000"
+                                        value={this.state.username}
+                                        onChangeText={text => this.setState({ username: text })} />
+                                </Item>
+                                <Item>
+                                    <Input style={{ color: "#000" }} placeholder="Email:"
+                                        placeholderTextColor="#000"
+                                        textColor="#000"
+                                        value={this.state.email}
+                                        onChangeText={text => this.setState({ email: text })} />
+                                </Item>
+                                <Item>
+                                    <Input style={{ color: "#000" }} placeholder="Điện thoại:"
+                                        placeholderTextColor="#000"
+                                        textColor="#000"
+                                        value={this.state.sdt}
+                                        onChangeText={text => this.setState({ sdt: text })} />
+                                </Item>
+                                <Item>
+                                    <Input secureTextEntry={true} style={{ color: "#000" }} placeholder="Mật khẩu:"
+                                        placeholderTextColor="#000" textColor="#000"
+                                        value={this.state.password}
+                                        onChangeText={text => this.setState({ password: text })} />
+                                </Item>
+                                <Item>
+                                    <Input secureTextEntry={true} style={{ color: "#000" }}
+                                        placeholder="Xác nhận mật khẩu:"
+                                        placeholderTextColor="#000" textColor="#000"
+                                        value={this.state.cpassword}
+                                        onChangeText={text => this.setState({ cpassword: text })} />
+                                </Item>
+                                <View style={styles.card}>
+                                    <View style={styles.textSex}>
+                                        <Text style={{ color: "#000" }}>Nam</Text>
+                                        <CheckBox
+                                            color={primary}
+                                            checked={this.state.tabNam}
+                                            onPress={() => this._onPressNam()} />
+                                    </View>
+                                    <View style={styles.textSex}>
+                                        <Text style={{ color: "#000" }}>Nữ</Text>
+                                        <CheckBox
+                                            color={primary}
+                                            checked={this.state.tabNu}
+                                            onPress={() => this._onPressNu()} />
+                                    </View>
+                                </View>
+                                <View style={styles.container}>
+                                    <Button style={styles.buttonRegister}
+                                        onPress={() => this.onSubmit()}>
+                                        <Text>Hoàn tất </Text>
+                                    </Button>
+                                </View>
+
+                                <Text style={styles.textLogin}
+                                    onPress={() => this._onPressLogin()}>Đăng nhập</Text>
+                            </View>
+                        </View>
+                    </ScrollView>
+                </Content>
             </Container>
         );
     }

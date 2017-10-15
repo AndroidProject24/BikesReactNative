@@ -40,6 +40,7 @@ import Home from './screen/Home';
 import ReportFailure from './screen/ReportFailure';
 import ReportOut from './screen/ReportOut';
 
+
 const { width, height } = Dimensions.get('window');
 
 const HomeStack = StackNavigator({
@@ -73,6 +74,9 @@ const HomeStack = StackNavigator({
   },
   ReportOut: {
     screen: ReportOut
+  },
+  QRCode: {
+    screen: QRCode
   }
 
 },
