@@ -18,10 +18,9 @@ import styles from "./styles";
 import axios from "axios";
 import {QRScannerView} from 'ac-qrcode';
 import api from "../../../utilities/Api";
-
+import { RNLocation as Location } from 'NativeModules'
 const Permissions = require('react-native-permissions');
 var isCheck = true;
-//import { RNLocation as Location } from 'NativeModules'
 
 class QRCode extends React.Component {
     state = {
@@ -52,14 +51,14 @@ class QRCode extends React.Component {
 
     }
 
-    // componentWillMount() {
-    //     Location.requestAlwaysAuthorization();
-    //     Location.startUpdatingLocation();
-    //     Location.setDistanceFilter(5.0);
-    //     DeviceEventEmitter.addListener('locationUpdated', (location) => {
-    //         this.setState({'location':location})
-    //     })
-    // }
+    componentWillMount() {
+        Location.requestAlwaysAuthorization();
+        Location.startUpdatingLocation();
+        Location.setDistanceFilter(5.0);
+        DeviceEventEmitter.addListener('locationUpdated', (location) => {
+            this.setState({'location':location})
+        })
+    }
 
     componentDidMount() {
         Permissions.checkMultiple(['camera', 'location'])
@@ -69,7 +68,6 @@ class QRCode extends React.Component {
                     locationPermission: response.location
                 })
             });
-        //this.onSubmit();
     }
 
     async onSubmit() {

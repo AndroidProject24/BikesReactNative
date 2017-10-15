@@ -35,7 +35,7 @@ export default {
   CheckboxIconMarginTop: platform === "ios" ? undefined : 1,
   CheckboxFontSize: platform === "ios" ? 23 / 0.9 : 18,
   DefaultFontSize: 17,
-  checkboxBgColor: "#039BE5",
+  checkboxBgColor: "#f26422",
   checkboxSize: 20,
   checkboxTickColor: "#fff",
 
@@ -100,7 +100,7 @@ export default {
   cardDefaultBg: "#fff",
 
   // Color
-  brandPrimary: platform === "ios" ? "#007aff" : "#3F51B5",
+  brandPrimary: platform === "ios" ? "#f26422" : "#f26422",
   brandInfo: "#62B1F6",
   brandSuccess: "#5cb85c",
   brandDanger: "#d9534f",
@@ -128,20 +128,20 @@ export default {
   // FooterTab
   tabBarTextColor: platform === "ios" ? "#6b6b6b" : "#b3c7f9",
   tabBarTextSize: platform === "ios" ? 14 : 11,
-  activeTab: platform === "ios" ? "#007aff" : "#fff",
-  sTabBarActiveTextColor: "#007aff",
-  tabBarActiveTextColor: platform === "ios" ? "#007aff" : "#fff",
+  activeTab: platform === "ios" ? "#f26422" : "#fff",
+  sTabBarActiveTextColor: "#f26422",
+  tabBarActiveTextColor: platform === "ios" ? "#f26422" : "#fff",
   tabActiveBgColor: platform === "ios" ? "#cde1f9" : undefined,
 
   // Tab
   tabDefaultBg: platform === "ios" ? "#F8F8F8" : "#3F51B5",
   topTabBarTextColor: platform === "ios" ? "#6b6b6b" : "#b3c7f9",
-  topTabBarActiveTextColor: platform === "ios" ? "#007aff" : "#fff",
+  topTabBarActiveTextColor: platform === "ios" ? "#f26422" : "#fff",
   topTabActiveBgColor: platform === "ios" ? "#cde1f9" : undefined,
-  topTabBarBorderColor: platform === "ios" ? "#007aff" : "#fff",
+  topTabBarBorderColor: platform === "ios" ? "#f26422" : "#fff",
 
   // Header
-  toolbarBtnColor: platform === "ios" ? "#007aff" : "#fff",
+  toolbarBtnColor: platform === "ios" ? "#f26422" : "#fff",
   toolbarDefaultBg: platform === "ios" ? "#F8F8F8" : "#3F51B5",
   toolbarHeight: platform === "ios" ? 64 : 56,
   toolbarIconSize: platform === "ios" ? 20 : 22,
@@ -150,7 +150,7 @@ export default {
   searchBarHeight: platform === "ios" ? 30 : 40,
   toolbarInverseBg: "#222",
   toolbarTextColor: platform === "ios" ? "#000" : "#fff",
-  toolbarDefaultBorder: platform === "ios" ? "#a7a6ab" : "#3F51B5",
+  toolbarDefaultBorder: platform === "ios" ? "#a7a6ab" : "#f26422",
   get statusBarColor() {
     return color(this.toolbarDefaultBg).darken(0.2).hexString();
   },
@@ -210,7 +210,7 @@ export default {
 
   // Radio Button
   radioBtnSize: platform === "ios" ? 25 : 23,
-  radioSelectedColorAndroid: "#5067FF",
+  radioSelectedColorAndroid: "#f26422",
 
   // New Variable
   radioBtnLineHeight: platform === "ios" ? 29 : 24,
