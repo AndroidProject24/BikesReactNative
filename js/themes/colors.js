@@ -1,2 +1,2 @@
-export const primary = '#3498db';
+export const primary = '#EF6530';
 export const secondary = '#ddd';

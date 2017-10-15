@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {StackNavigator} from 'react-navigation';
-import {Root} from "native-base";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { StackNavigator } from 'react-navigation';
+import { Root } from "native-base";
 import Drawer from "./screen/Drawer";
 import Login from "./screen/Login";
 import Register from "./screen/Register";
@@ -51,9 +51,9 @@ const createStackNavigator = currentUser => StackNavigator({
         },
     },
 }, {
-    initialRouteName: isEmpty(currentUser) ? 'Login' : 'Drawer',
-    headerMode: 'none'
-});
+        initialRouteName: isEmpty(currentUser) ? 'Login' : 'Drawer',
+        headerMode: 'none'
+    });
 
 class App extends Component {
 
@@ -64,15 +64,15 @@ class App extends Component {
                     cameraPermission: response.camera,
                     locationPermission: response.location,
                 })
-            }); 
+            });
     }
 
     render() {
-        const {currentUser} = this.props;
+        const { currentUser } = this.props;
         const Navigator = createStackNavigator(currentUser);
         return (
             <Root>
-                <Navigator/>
+                <Navigator />
             </Root>
         );
     }

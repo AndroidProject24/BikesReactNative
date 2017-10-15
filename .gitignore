@@ -5,3 +5,8 @@ npm-debug.*
 /android/app/build/
 /ios/build/
 .idea/
+
+# Android/IntelliJ
+#
+local.properties
+*.iml
