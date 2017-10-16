@@ -38,11 +38,11 @@ export default class Home extends Component {
             text='Tin tức'
             source={Constants.iconNews} />
           <MenuItem
-            onPress={() => this.props.navigation.navigate('Help')}
+            onPress={() => this.props.navigation.navigate('Guide')}
             text='Hướng dẫn'
             source={Constants.iconGuide} />
           <MenuItem
-            onPress={() => this.props.navigation.navigate('ReportOut')}
+            onPress={() => this.props.navigation.navigate('Report')}
             text='Báo cáo'
             source={Constants.iconReport} />
           <MenuItem

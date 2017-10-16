@@ -120,8 +120,8 @@ export default class TabTwo extends Component {
                         </Item>
                     </Form>
                     <Button style={{
-                        backgroundColor: "#4e699e", width: '100%', marginTop: 30, justifyContent: 'center',
-                        alignItems: 'center'
+                        backgroundColor: "#EF6530", width: '100%', marginTop: 30, justifyContent: 'center',
+                        alignItems: 'center', borderRadius: 10,
                     }}
                             onPress={() => this.onSubmit()}>
                         <Text>Đổi mật khẩu</Text>

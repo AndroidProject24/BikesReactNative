@@ -8,8 +8,20 @@ import {
   Text
 } from 'react-native';
 import {
+  Spinner,
   Container,
+  Toast,
+  Header,
+  Title,
+  Button,
+  Icon,
+  Footer,
+  FooterTab,
   Content,
+  Left,
+  Right,
+  Body,
+  H3
 } from "native-base";
 import Toolbar from '../../elements/Toolbar';
 import Constants from '../../constants';
@@ -31,12 +43,17 @@ export default class ReportFailure extends Component {
   render() {
     return (
       <Container>
-        <Toolbar
-          navigation={this.props.navigation}
-          iconLeft={Constants.iconProfile}
-          actionLeft={() => this.props.navigation.navigate('DrawerOpen')}
-          title='Báo hỏng xe'
-        />
+      <Header style={{ backgroundColor: '#EF6530' }}>
+      <Left>
+          <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-back" />
+          </Button>
+      </Left>
+      <Body>
+          <Title style={styles.titleToolbar}>Báo xe hỏng</Title>
+      </Body>
+      <Right />
+    </Header>
         <Content>
 
           <View>

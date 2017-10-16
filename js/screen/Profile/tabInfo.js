@@ -308,14 +308,18 @@ export default class TabOne extends Component {
                                 <Body>
                                 <Text style={{color: "#3c5b94"}}>Nam</Text>
                                 </Body>
-                                <CheckBox checked={this.state.data.gender==1}
+                                <CheckBox 
+                                color='#EF6530'                                
+                                checked={this.state.data.gender==1}
                                           onPress={() => this._onPressNam()}/>
                             </View>
                             <View style={styles.textSex}>
                                 <Body>
                                 <Text style={{color: "#3c5b94"}}>Nữ</Text>
                                 </Body>
-                                <CheckBox checked={this.state.data.gender==0}
+                                <CheckBox 
+                                color='#EF6530'
+                                checked={this.state.data.gender==0}
                                           onPress={() => this._onPressNu()}/>
                             </View>
                         </View>
@@ -387,7 +391,8 @@ export default class TabOne extends Component {
                                }}/>
                     </Item>
                     <Button style={{
-                        backgroundColor: "#4e699e",
+                        borderRadius: 10,   
+                        backgroundColor: "#EF6530",
                         width: '100%',
                         marginTop: 30,
                         marginBottom: 30,

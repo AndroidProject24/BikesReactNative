@@ -87,7 +87,7 @@ class Login extends Component {
     _onPressHome() {
         const {updateCurrentUser} = this.props;
         updateCurrentUser({name: 'toan '});
-        //this.props.navigation.navigate("News");
+        this.props.navigation.navigate('Drawer');
     }
 
     render() {

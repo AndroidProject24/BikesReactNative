@@ -3,10 +3,11 @@ const React = require("react-native");
 const { StyleSheet, Dimensions, Platform } = React;
 
 const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
 
 export default {
   container: {
-    backgroundColor: "#3c5b94"
+    backgroundColor: "white"
   },
   imageContainer: {
     backgroundColor: "#3c5b94",
@@ -15,21 +16,22 @@ export default {
     height: null
   },
   flatList: {
-    marginBottom:50
+    marginBottom: 50
   },
   content: {
     marginLeft: 16
   },
   card: {
+    width: deviceWidth/2- 20,
     backgroundColor: "#FFFF",
-    flexDirection: "row",
     marginTop: 10,
-    marginLeft:5,
-    marginRight:5,
-    borderRadius:10,
-    height: 110
+    marginLeft: 5,
+    marginRight: 5,
+    borderRadius: 10,
+    height: deviceWidth/2 + 55, 
   },
   title: {
+    fontWeight: 'bold',
     fontSize: 16,
     fontFamily: "FontAwesome",
     color: "#000000"
@@ -41,10 +43,10 @@ export default {
   },
   logoContainer: {
     marginTop: deviceHeight / 8,
-      flex: 1,
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center'
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   logo: {
     marginTop: Platform.OS === "android" ? 35 : 60,

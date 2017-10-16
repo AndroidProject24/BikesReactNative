@@ -8,7 +8,8 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import api from "../../../utilities/Api";
 import ImageLoad from 'react-native-image-placeholder';
-
+import bikes from '../../../assets/images/bikes.png';
+import location from '../../../assets/images/ic_location.png';
 class Garage extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -113,49 +114,45 @@ class Garage extends React.PureComponent {
       <TouchableOpacity
         delayPressIn={70}
         activeOpacity={0.8}
+        style={styles.cardContent}
         onPress={() => this._onPressButton(item.id, item.title)}>
-        <Container style={styles.card}>
-          <Left>
-            <ImageLoad
-              rkCardImg
-              isShowActivity={false}
-              style={{ width: 80, height: 80, margin: 10 }}
-              source={{ uri: `http://demo.easymove.vn/images/${item.image}` }}
+            <Text
+            numberOfLines={1}
+            style={styles.title}
+            allowFontScaling={false}>
+            {item.name}
+          </Text>
+        <View style={styles.card}>
+          <Left style={{alignItems:'center'}}>
+            <Image
+              style={{ width: 60, height: 40, margin: 10 }}
+              source={bikes}
             />
           </Left>
-          <Body>
-            <View>
+          <Body style={{alignItems:'center', flexDirection: 'row'}}>
               <Text
-                numberOfLines={1}
-                style={styles.title}
+                style={[styles.summary,{fontWeight:'bold'}]}
                 allowFontScaling={false}>
-                {item.name}
-              </Text>
-              <Text
-                numberOfLines={1}
-                style={styles.summary}
-                allowFontScaling={false}>
-                Số lượng xe:
+                {item.max_bike + " "}
+                </Text>
                   <Text style={styles.summary}
                   allowFontScaling={false}>
-                  {item.max_bike + " "}
-                </Text>
+                Available bikes
               </Text>
-            </View>
           </Body>
-          <Right>
+          <Right style={{alignItems:'center',marginLeft: 20}}>
+            <Image
+              style={{ width: 60, height: 40 }}
+              source={location}
+            />
             <Text
               numberOfLines={1}
               style={styles.summary2}
               allowFontScaling={false}>
-              Đang gửi:
-                <Text style={styles.summary2}
-                allowFontScaling={false}>
-                {item.bikes + " "}
-              </Text>
+              2.1km
             </Text>
           </Right>
-        </Container>
+        </View>
       </TouchableOpacity>
     );
   }
@@ -226,7 +223,7 @@ class Garage extends React.PureComponent {
 
         </Header>
 
-        <Content padder>
+        <Content padder style={{ backgroundColor: 'white' }}>
           <FlatList
             style={styles.root}
             data={this.state.data}

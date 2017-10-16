@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import api from "../../../utilities/Api";
 import CounterEmitter from '../../../js/utils/CountEmitter';
 const BgProfile = require("../../../assets/images/bg_profile.png");
-
+import { NavigationActions } from 'react-navigation'
 class Profile extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -42,7 +42,16 @@ class Profile extends React.PureComponent {
   }
 
   _onPressLogin() {
-    this.props.navigation.navigate("Login");
+    AsyncStorage.clear();
+    this.props.navigation.dispatch(NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({
+          routeName: 'Login',
+        })
+      ]
+    }))
+
   }
 
   async _loadInitialState() {
@@ -126,25 +135,33 @@ class Profile extends React.PureComponent {
           </Right>
         </Header>
 
-        <Content style={{ height: 160 }}>
-          <Image source={BgProfile} style={styles.imageContainer}>
-            <View style={styles.content} >
-              <Thumbnail large source={{ uri: 'http://tapchilamtoc.com/wp-content/uploads/2015/11/cac-kieu-toc-dep-cua-song-hye-kyo-khien-hang-trieu-trai-tim-ham-mo7.jpg' }} />
-              <Body>
-                <Text style={{ color: "#FFF" }}>{this.state.name}</Text>
-                <Text style={{ color: "#FFF" }}>{this.state.email}</Text>
-                <Text style={{ backgroundColor: "transparent", color: "#FFFFFF", marginLeft: 180, fontSize: 14, marginTop: 10 }}
-                  onPress={() => this._onPressLogin()}>Đăng xuất</Text>
-              </Body>
-            </View>
-          </Image>
-        </Content>
+        <Image
+          resizeMode='stretch'
+          source={BgProfile}
+          style={styles.imageContainer}>
+          <View style={styles.content} >
+            <Thumbnail large source={{ uri: 'http://tapchilamtoc.com/wp-content/uploads/2015/11/cac-kieu-toc-dep-cua-song-hye-kyo-khien-hang-trieu-trai-tim-ham-mo7.jpg' }} />
+            <Body>
+              <Text style={{ color: "#EF6530", fontWeight: 'bold' }}>{this.state.name}</Text>
+              <Text style={{ color: "#EF6530", fontWeight: 'bold' }}>{this.state.email}</Text>
+              <Text style={{
+                backgroundColor: "transparent", color: "#EF6530",
+                marginLeft: 180, fontSize: 14, marginTop: 10, fontWeight: 'bold'
+              }}
+                onPress={() => this._onPressLogin()}>Đăng xuất</Text>
+            </Body>
+          </View>
+        </Image>
         <View style={{ flex: 2.5, backgroundColor: "#FFFFFF" }}>
-          <Tabs style={{ elevation: 2 }}>
-            <Tab heading={<TabHeading><Text>Thông tin</Text></TabHeading>}>
+          <Tabs
+            tabStyle={{ backgroundColor: '#EF6530' }}
+            style={{ elevation: 2 }}>
+            <Tab
+              heading={<TabHeading><Text>Thông tin</Text></TabHeading>}>
               <TabInfo />
             </Tab>
-            <Tab heading={<TabHeading><Text>Đổi mật khẩu</Text></TabHeading>}>
+            <Tab
+              heading={<TabHeading><Text>Đổi mật khẩu</Text></TabHeading>}>
               <TabChangePass />
             </Tab>
           </Tabs>

@@ -36,7 +36,7 @@ import About from "./screen/About";
 import Statistic from "./screen/Statistic";
 import Splash from './screen/Splash';
 import Home from './screen/Home';
-
+import Guide from './screen/Guide';
 import ReportFailure from './screen/ReportFailure';
 import ReportOut from './screen/ReportOut';
 
@@ -77,6 +77,9 @@ const HomeStack = StackNavigator({
   },
   QRCode: {
     screen: QRCode
+  },
+  Guide: {
+    screen: Guide
   }
 
 },
@@ -121,9 +124,12 @@ const Stack = StackNavigator({
   ChangePass: {
     screen: ChangePass,
   },
+  Guide: {
+    screen: Guide,
+  }
 
 }, {
-    initialRouteName: 'Drawer',
+    initialRouteName: 'Splash',
     navigationOptions: {
       header: null,
     },

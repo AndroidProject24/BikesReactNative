@@ -24,6 +24,7 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		14A12D3F76C647DCB3BA6EE4 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CC01A7DAD814C1DB1665982 /* FontAwesome.ttf */; };
 		158E125617ED4583B5C43D66 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A1F6B15C12E40F39124A4EF /* Foundation.ttf */; };
+		23DF6C728A2E6C492D16F0E7 /* libPods-Bikes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2518CD9A5E6D852C2309A1 /* libPods-Bikes.a */; };
 		2ABEAB702C014D66AD3CE4C7 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93CE5DDC97454107827A61F4 /* Roboto_medium.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -42,6 +43,7 @@
 		3E2A0FB5B6B748E5AD66FAD1 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F224D8A4B0A46BAB6FB7DD0 /* libRCTCamera.a */; };
 		57D82887B64B46169A93B5D4 /* libRNLocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B35FA62250E247DAB7E9A03D /* libRNLocation.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		5FB36679F3A94F6F85DF3CD3 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF20FBB22DED4A32A85D6F09 /* libAirMaps.a */; };
 		62A2EC1CA37641F284425F31 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DC5E593BEBA4ED9B8B1F085 /* Zocial.ttf */; };
 		671F6DAEAA5C42089DA884DF /* libReactNativePermissions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6FBD3B44AAE434CB3BF3F8D /* libReactNativePermissions.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -54,7 +56,6 @@
 		DBB336560E9C470F99DC4196 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF54890B7FF341B4BBCE7D0E /* MaterialIcons.ttf */; };
 		EB8960BD936F4575AA1428E8 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BD53C97A3FC42D995E66DDF /* rubicon-icon-font.ttf */; };
 		FE1D91EE278942B0BC2E886D /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9FC1CF1F4E5C436FB472D7D7 /* SimpleLineIcons.ttf */; };
-		5FB36679F3A94F6F85DF3CD3 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF20FBB22DED4A32A85D6F09 /* libAirMaps.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -315,6 +316,8 @@
 		4DC5E593BEBA4ED9B8B1F085 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		5A1F6B15C12E40F39124A4EF /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		6152EF4E6E6F4B08912E672B /* AirMaps.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AirMaps.xcodeproj; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; };
+		6A2518CD9A5E6D852C2309A1 /* libPods-Bikes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bikes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CC01A7DAD814C1DB1665982 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -327,12 +330,13 @@
 		B35FA62250E247DAB7E9A03D /* libRNLocation.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNLocation.a; sourceTree = "<group>"; };
 		B6FBD3B44AAE434CB3BF3F8D /* libReactNativePermissions.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativePermissions.a; sourceTree = "<group>"; };
 		BF54890B7FF341B4BBCE7D0E /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		C85691085F4258BD7BE1514C /* Pods-Bikes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bikes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bikes/Pods-Bikes.release.xcconfig"; sourceTree = "<group>"; };
 		CFC2D34EC1134FB9A800A849 /* RNLocation.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNLocation.xcodeproj; path = "../node_modules/react-native-location/RNLocation.xcodeproj"; sourceTree = "<group>"; };
 		D3911374E7CC4C9798FBFEA1 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		D6BA37D570874B349638D66B /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		E0A0190A9DE9E74FD76F5A26 /* Pods-Bikes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bikes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bikes/Pods-Bikes.debug.xcconfig"; sourceTree = "<group>"; };
+		EF20FBB22DED4A32A85D6F09 /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = archive.ar; name = libAirMaps.a; path = libAirMaps.a; sourceTree = "<group>"; };
 		F97ED71F2F2043FBA7FDD7A5 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		6152EF4E6E6F4B08912E672B /* AirMaps.xcodeproj */ = {isa = PBXFileReference; name = "AirMaps.xcodeproj"; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		EF20FBB22DED4A32A85D6F09 /* libAirMaps.a */ = {isa = PBXFileReference; name = "libAirMaps.a"; path = "libAirMaps.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -365,6 +369,7 @@
 				3E2A0FB5B6B748E5AD66FAD1 /* libRCTCamera.a in Frameworks */,
 				57D82887B64B46169A93B5D4 /* libRNLocation.a in Frameworks */,
 				5FB36679F3A94F6F85DF3CD3 /* libAirMaps.a in Frameworks */,
+				23DF6C728A2E6C492D16F0E7 /* libPods-Bikes.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +513,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		725272AE4366885ACA3E216B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E0A0190A9DE9E74FD76F5A26 /* Pods-Bikes.debug.xcconfig */,
+				C85691085F4258BD7BE1514C /* Pods-Bikes.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		737E3AED2BCE76A950CA0819 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A2518CD9A5E6D852C2309A1 /* libPods-Bikes.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +580,8 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				F2EA5A1B32AA411A8C408882 /* Resources */,
 				F2F0C55D1F84C15E00FC5F7F /* Recovered References */,
+				725272AE4366885ACA3E216B /* Pods */,
+				737E3AED2BCE76A950CA0819 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -665,10 +689,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Bikes" */;
 			buildPhases = (
+				3E79A12B70F6E5D4AF759E57 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				87712D6B3A6448D2723EAEFE /* [CP] Embed Pods Frameworks */,
+				863A25345A36975FC60F1903 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1113,6 +1140,51 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		3E79A12B70F6E5D4AF759E57 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		863A25345A36975FC60F1903 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bikes/Pods-Bikes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87712D6B3A6448D2723EAEFE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bikes/Pods-Bikes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1245,6 +1317,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0A0190A9DE9E74FD76F5A26 /* Pods-Bikes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1270,6 +1343,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C85691085F4258BD7BE1514C /* Pods-Bikes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;

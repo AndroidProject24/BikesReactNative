@@ -3,13 +3,11 @@ const React = require("react-native");
 const {Dimensions, Platform} = React;
 
 const deviceWidth = Dimensions.get("window").width;
-
+const deviceHeight= Dimensions.get("window").height;
 export default {
     root: {
         backgroundColor: "#f6f6f6",
         flex: 1,
-        width: null,
-        height: null
     },
     imageContainer: {
         flex: 0.2,
@@ -17,9 +15,12 @@ export default {
         justifyContent: 'center'
     },
     imageContainerBottom: {
-        flex: 0.3,
+        position : 'absolute',
+        bottom: 0, 
+        left: 0, right: 0,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        height: deviceHeight/2,
     },
     content1: {
         flex: 0.2,
@@ -71,8 +72,10 @@ export default {
         resizeMode: 'center'
     },
     logoBottom: {
+        position : 'absolute',
+        bottom: 0, 
+        left: 0, right: 0,
         width: deviceWidth,
-        height:deviceWidth/1.5,
-        resizeMode: 'stretch'
+        height: 1075*deviceWidth/1650,
     }
 };

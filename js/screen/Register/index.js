@@ -127,7 +127,7 @@ class Register extends React.PureComponent {
     render() {
         return (
             <Container>
-                <Header>
+                <Header style={{ backgroundColor: '#EF6530' }}>
                     <Left>
                         <Button transparent onPress={() => this.props.navigation.goBack()}>
                             <Icon name="arrow-back" />

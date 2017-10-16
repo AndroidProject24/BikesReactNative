@@ -17,7 +17,7 @@ import {
 } from "native-base";
 import styles from "./styles";
 
-const icon_bottom = require("../../../assets/images/bg_login.png");
+const icon_bottom = require("../../../assets/images/bg_about.png");
 const icon_top = require("../../../assets/images/icon_login.png");
 
 class About extends Component {
@@ -39,8 +39,13 @@ class About extends Component {
                     </Body>
                     <Right />
                 </Header>
-                <Content>
                     <View style={styles.root}>
+                        <View style={styles.imageContainerBottom}>
+                            <Image 
+                            resizeMode='stretch'
+                             source={icon_bottom}
+                             style={styles.logoBottom} />
+                        </View>
                         <View style={styles.imageContainer}>
                             <Image source={icon_top} style={styles.logoTop} />
                         </View>
@@ -83,11 +88,8 @@ class About extends Component {
                                 Add:43 Tản Đà, Phường 10 , Quận 5, TP.HCM
                             </Text>
                         </View>
-                        <View style={styles.imageContainerBottom}>
-                            <Image source={icon_bottom} style={styles.logoBottom} />
-                        </View>
+                       
                     </View>
-                </Content>
             </Container>
         );
     }

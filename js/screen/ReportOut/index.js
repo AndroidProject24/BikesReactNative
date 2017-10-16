@@ -7,8 +7,20 @@ import {
   StyleSheet
 } from 'react-native';
 import {
+  Spinner,
   Container,
+  Toast,
+  Header,
+  Title,
+  Button,
+  Icon,
+  Footer,
+  FooterTab,
   Content,
+  Left,
+  Right,
+  Body,
+  H3
 } from "native-base";
 import Constants from '../../constants';
 import { primary } from '../../themes/colors';
@@ -26,12 +38,17 @@ export default class ReportOut extends Component {
   render() {
     return (
       <Container>
-        <Toolbar
-          navigation={this.props.navigation}
-          iconLeft={Constants.iconProfile}
-          actionLeft={() => this.props.navigation.navigate('DrawerOpen')}
-          title='Báo xe đậu ngoài trạm'
-        />
+        <Header style={{ backgroundColor: '#EF6530' }}>
+          <Left>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
+          <Body>
+            <Title style={styles.titleToolbar}>Báo xe đậu ngoài trạm</Title>
+          </Body>
+          <Right />
+        </Header>
         <Content>
 
           <View style={styles.inputLayout}>

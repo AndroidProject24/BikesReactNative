@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, AsyncStorage, TouchableOpacity, View, StatusBar } from "react-native";
+import { FlatList, AsyncStorage, TouchableOpacity, View, StatusBar, Dimensions } from "react-native";
 import { Spinner, Container, Toast, Header, Title, Content, Text, H3, Button, Icon, Footer, FooterTab, Left, Right, Body } from "native-base";
 import { Drawer } from 'native-base';
 import styles from "./styles";
@@ -8,6 +8,7 @@ import api from "../../../utilities/Api";
 import ImageLoad from 'react-native-image-placeholder';
 import * as ducks from '../../../js/utils/ducks';
 import { connect } from 'react-redux';
+const { width, height } = Dimensions.get('window');
 
 class News extends React.PureComponent {
   constructor(props) {
@@ -115,23 +116,23 @@ class News extends React.PureComponent {
           <ImageLoad
             rkCardImg
             isShowActivity={false}
-            style={{ width: 80, height: 80, margin: 10 }}
+            style={{ width: width/2 - 20, height: width/2-20 }}
             source={{ uri: `http://demo.easymove.vn/images/${item.image}` }}
           />
-          <Body>
+          <Body style={{ padding: 10 , backgroundColor  : 'gray'}}> 
             <Text
-              numberOfLines={2}
+              numberOfLines={1}
               style={styles.title}
               allowFontScaling={false}>
               {item.title}
             </Text>
             <Text
-              numberOfLines={3}
+              numberOfLines={2}
               style={styles.summary}
               allowFontScaling={false}>
               {item.summary}
             </Text>
-          </Body>
+         </Body>
         </Container>
       </TouchableOpacity>
     );
@@ -161,8 +162,14 @@ class News extends React.PureComponent {
         } else {
           //Toast.show({text: "Hết dữ liệu!",position: 'top',duration: 2000})
           console.log('not page');
+          this.setState({
+            isLoading: false
+          });
         }
       }).catch(err => {
+        this.setState({
+          isLoading: false
+        });
         Toast.show({ text: err, position: 'top', duration: 2000 })
         console.log('next page', err); // eslint-disable-line
       });
@@ -203,6 +210,8 @@ class News extends React.PureComponent {
 
         <Content padder>
           <FlatList
+            numColumns={2}
+            keyExtractor={({ item, index }) => index}
             style={styles.flatList}
             data={this.state.data}
             extraData={this.state}

@@ -1,20 +1,21 @@
 const React = require("react-native");
 
-const {StyleSheet, Dimensions, Platform} = React;
+const { StyleSheet, Dimensions, Platform } = React;
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 export default {
     container: {
-        backgroundColor: "#3c5b94"
+        backgroundColor: "white"
     },
     imageContainer: {
         flex: 1,
-        width: null,
-        height: 160
+        width: deviceWidth,
+        height: 918 * deviceWidth / 2751,
+
     },
     content: {
-        height: 160,
+        flex: 1,
         flexDirection: "row",
         marginLeft: 16,
         justifyContent: 'center',
@@ -57,8 +58,8 @@ export default {
         marginTop: 5
     },
     cardSex: {
-        width:300,
-        marginBottom:10,
+        width: 300,
+        marginBottom: 10,
         backgroundColor: "transparent",
         flexDirection: "row",
         justifyContent: 'center',
