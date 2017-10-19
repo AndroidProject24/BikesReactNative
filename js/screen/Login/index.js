@@ -1,12 +1,12 @@
-import React, {Component} from "react";
-import {AsyncStorage, Image, View, StatusBar, KeyboardAvoidingView} from "react-native";
-import {Spinner, Container, Button, H3, Toast, Text, Item, Input} from "native-base";
+import React, { Component } from "react";
+import { AsyncStorage, Image, View, StatusBar, KeyboardAvoidingView } from "react-native";
+import { Spinner, Container, Button, H3, Toast, Text, Item, Input } from "native-base";
 import styles from "./styles";
 import axios from "axios";
 import api from "../../../utilities/Api";
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as ducks from '../../../js/utils/ducks';
-import {getNavigationOptions} from '../../../js/utils/navigation';
+import { getNavigationOptions } from '../../../js/utils/navigation';
 import * as Colors from '../../themes/colors';
 
 const icon_bottom = require("../../../assets/images/bg_login.png");
@@ -36,10 +36,10 @@ class Login extends Component {
         var parent = this;
         if (parent.state.isLoading && !parent.state.error) {
             <View style={styles.container}>
-                <Spinner color="blue"/>
+                <Spinner color="#EF6530" />
             </View>;
         } else if (parent.state.error) {
-            Toast.show({text: parent.state.errorInfo, position: 'top', duration: 2000})
+            Toast.show({ text: parent.state.errorInfo, position: 'top', duration: 2000 })
         }
         var qs = require("qs");
         axios.post("/member/login",
@@ -59,7 +59,7 @@ class Login extends Component {
                     parent._onPressHome();
                 } else {
                     console.log("renderErrorView", response.data.msg);
-                    Toast.show({text: response.data.msg, position: 'top', duration: 2000})
+                    Toast.show({ text: response.data.msg, position: 'top', duration: 2000 })
                 }
             })
             .catch(function (error) {
@@ -67,7 +67,7 @@ class Login extends Component {
                     error: true,
                     errorInfo: error
                 });
-                Toast.show({text: error, position: 'top', duration: 2000})
+                Toast.show({ text: error, position: 'top', duration: 2000 })
                 console.log("Error fetching and parsing data", error);
             });
     }
@@ -85,8 +85,8 @@ class Login extends Component {
     }
 
     _onPressHome() {
-        const {updateCurrentUser} = this.props;
-        updateCurrentUser({name: 'toan '});
+        const { updateCurrentUser } = this.props;
+        updateCurrentUser({ name: 'toan ' });
         this.props.navigation.navigate('Drawer');
     }
 
@@ -94,39 +94,39 @@ class Login extends Component {
         return (
             <KeyboardAvoidingView style={styles.root}>
                 <Container>
-                    <StatusBar barStyle="light-content"/>
+                    <StatusBar barStyle="light-content" />
                     <View style={styles.root}>
                         <View style={styles.imageContainer}>
-                            <Image source={icon_top} style={styles.logoTop}/>
+                            <Image source={icon_top} style={styles.logoTop} />
                         </View>
 
                         <View style={styles.content}>
                             <Button style={styles.buttonLogin} onPress={() => this.onSubmit()}>
-                                <Text style={{color: "#FFF"}}>Đăng nhập</Text>
+                                <Text style={{ color: "#FFF" }}>Đăng nhập</Text>
                             </Button>
                             <Item>
-                                <Input style={{color: "#000"}} placeholder="User name/Phone number:"
-                                       placeholderTextColor="#000"
-                                       textColor="#000"
-                                       value={this.state.username}
-                                       onChangeText={text => this.setState({username: text})}/>
+                                <Input style={{ color: "#000" }} placeholder="User name/Phone number:"
+                                    placeholderTextColor="#000"
+                                    textColor="#000"
+                                    value={this.state.username}
+                                    onChangeText={text => this.setState({ username: text })} />
                             </Item>
                             <Item>
-                                <Input secureTextEntry={true} style={{color: "#000"}} placeholder="Password:"
-                                       placeholderTextColor="#000"
-                                       value={this.state.password}
-                                       onChangeText={text => this.setState({password: text})}/>
+                                <Input secureTextEntry={true} style={{ color: "#000" }} placeholder="Password:"
+                                    placeholderTextColor="#000"
+                                    value={this.state.password}
+                                    onChangeText={text => this.setState({ password: text })} />
                             </Item>
 
                             <Text style={styles.textForget}
-                                  onPress={() => this._onPressForgetPass()}>Quên password?</Text>
+                                onPress={() => this._onPressForgetPass()}>Quên password?</Text>
                             <Text style={styles.textRegister}>Bạn chưa có tài khoản?</Text>
                             <Button style={styles.buttonRegister} onPress={() => this._onPressSignUp()}>
-                                <Text style={{color: "#FFF"}}>Đăng ký </Text>
+                                <Text style={{ color: "#FFF" }}>Đăng ký </Text>
                             </Button>
                         </View>
                         <View style={styles.imageContainerBottom}>
-                            <Image source={icon_bottom} style={styles.logoBottom}/>
+                            <Image source={icon_bottom} style={styles.logoBottom} />
                         </View>
                     </View>
                 </Container>
@@ -135,7 +135,7 @@ class Login extends Component {
     }
 }
 
-Login.navigationOptions = ({navigation}) => getNavigationOptions('Login', Colors.primary, 'white');
+Login.navigationOptions = ({ navigation }) => getNavigationOptions('Login', Colors.primary, 'white');
 
 const mapStateToProps = store => ({
     currentUser: store.currentUser,

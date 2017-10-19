@@ -144,7 +144,7 @@ class Help extends React.PureComponent {
   renderProgress = () => {
     return (
       <View style={styles.progressBar}>
-        <Spinner color="blue" />
+        <Spinner color="#EF6530" />
       </View>
     );
   }

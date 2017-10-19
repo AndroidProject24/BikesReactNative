@@ -116,10 +116,10 @@ class News extends React.PureComponent {
           <ImageLoad
             rkCardImg
             isShowActivity={false}
-            style={{ width: width/2 - 20, height: width/2-20 }}
+            style={{ width: width / 2 - 20, height: width / 2 - 20 }}
             source={{ uri: `http://demo.easymove.vn/images/${item.image}` }}
           />
-          <Body style={{ padding: 10 , backgroundColor  : 'gray'}}> 
+          <Body style={{ padding: 10, backgroundColor: 'gray' }}>
             <Text
               numberOfLines={1}
               style={styles.title}
@@ -132,7 +132,7 @@ class News extends React.PureComponent {
               allowFontScaling={false}>
               {item.summary}
             </Text>
-         </Body>
+          </Body>
         </Container>
       </TouchableOpacity>
     );
@@ -177,7 +177,7 @@ class News extends React.PureComponent {
   renderProgress = () => {
     return (
       <View style={styles.progressBar}>
-        <Spinner color="blue" />
+        <Spinner color="#EF6530" />
       </View>
     );
   }

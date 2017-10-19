@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {AsyncStorage, TouchableOpacity, Keyboard, Image, View, StatusBar} from "react-native";
+import React, { Component } from 'react';
+import { AsyncStorage, TouchableOpacity, Keyboard, Image, View, StatusBar } from "react-native";
 import {
     Spinner,
     Container,
@@ -53,7 +53,7 @@ export default class TabTwo extends Component {
         var parent = this;
         if (parent.state.isLoading && !parent.state.error) {
             <View style={styles.container}>
-                <Spinner color="blue"/>
+                <Spinner color="#EF6530" />
             </View>;
         }
         var qs = require("qs");
@@ -74,10 +74,10 @@ export default class TabTwo extends Component {
                         cpassword: parent.state.cpassword,
                         oldpassword: parent.state.oldpassword,
                     });
-                    Toast.show({text: response.data.msg, position: 'top', duration: 2000});
+                    Toast.show({ text: response.data.msg, position: 'top', duration: 2000 });
                 } else {
                     console.log("renderErrorView", response.data.msg);
-                    Toast.show({text: response.data.msg, position: 'top', duration: 2000});
+                    Toast.show({ text: response.data.msg, position: 'top', duration: 2000 });
                 }
             })
             .catch(function (error) {
@@ -85,7 +85,7 @@ export default class TabTwo extends Component {
                     error: true,
                     errorInfo: error
                 });
-                Toast.show({text: error, position: 'top', duration: 2000});
+                Toast.show({ text: error, position: 'top', duration: 2000 });
                 console.log("Error fetching and parsing data", error);
             });
     }
@@ -102,28 +102,28 @@ export default class TabTwo extends Component {
                     <Form>
                         <Item stackedLabel>
                             <Label textColor="#3c5b94">Mật khẩu cũ</Label>
-                            <Input secureTextEntry={true} style={{color: "#3c5b94"}} textColor="#3c5b94"
-                                   value={this.state.oldpassword}
-                                   onChangeText={text => this.setState({oldpassword: text})}/>
+                            <Input secureTextEntry={true} style={{ color: "#3c5b94" }} textColor="#3c5b94"
+                                value={this.state.oldpassword}
+                                onChangeText={text => this.setState({ oldpassword: text })} />
                         </Item>
                         <Item stackedLabel>
                             <Label textColor="#3c5b94">Mật khẩu mới</Label>
-                            <Input secureTextEntry={true} style={{color: "#3c5b94"}} textColor="#3c5b94"
-                                   value={this.state.password}
-                                   onChangeText={text => this.setState({password: text})}/>
+                            <Input secureTextEntry={true} style={{ color: "#3c5b94" }} textColor="#3c5b94"
+                                value={this.state.password}
+                                onChangeText={text => this.setState({ password: text })} />
                         </Item>
                         <Item stackedLabel>
                             <Label textColor="#3c5b94">Xác nhận mật khẩu mới</Label>
-                            <Input secureTextEntry={true} style={{color: "#3c5b94"}} textColor="#3c5b94"
-                                   value={this.state.cpassword}
-                                   onChangeText={text => this.setState({cpassword: text})}/>
+                            <Input secureTextEntry={true} style={{ color: "#3c5b94" }} textColor="#3c5b94"
+                                value={this.state.cpassword}
+                                onChangeText={text => this.setState({ cpassword: text })} />
                         </Item>
                     </Form>
                     <Button style={{
                         backgroundColor: "#EF6530", width: '100%', marginTop: 30, justifyContent: 'center',
                         alignItems: 'center', borderRadius: 10,
                     }}
-                            onPress={() => this.onSubmit()}>
+                        onPress={() => this.onSubmit()}>
                         <Text>Đổi mật khẩu</Text>
                     </Button>
                 </View>

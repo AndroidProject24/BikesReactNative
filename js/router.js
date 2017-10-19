@@ -43,11 +43,44 @@ import ReportOut from './screen/ReportOut';
 
 const { width, height } = Dimensions.get('window');
 
-const HomeStack = StackNavigator({
-
-  Home: {
-    screen: Home
+const Drawer = DrawerNavigator(
+  {
+    Home: {
+      screen: Home,
+    }
   },
+  {
+
+    drawerWidth: 5 * width / 8,
+    contentComponent: props => <Menu {...props} />
+  }
+);
+const Stack = StackNavigator({
+  Splash: {
+    screen: Splash
+  },
+  Login: {
+    screen: Login,
+  },
+  Drawer: {
+    screen: Drawer, //Home screen
+  },
+  Register: {
+    screen: Register,
+  },
+  ForgetPass: {
+    screen: ForgetPass,
+  },
+  ForgetPass1: {
+    screen: ForgetPass1,
+  },
+  ChangePass: {
+    screen: ChangePass,
+  },
+  Guide: {
+    screen: Guide,
+  },
+
   Profile: {
     screen: Profile
   },
@@ -78,55 +111,6 @@ const HomeStack = StackNavigator({
   QRCode: {
     screen: QRCode
   },
-  Guide: {
-    screen: Guide
-  }
-
-},
-  {
-    initialRouteName: 'Home',
-    navigationOptions: {
-      header: null,
-    },
-  }
-);
-const Drawer = DrawerNavigator(
-  {
-    Home: {
-      screen: HomeStack
-    }
-  },
-  {
-
-    drawerWidth: 5 * width / 8,
-    contentComponent: props => <Menu {...props} />
-  }
-);
-const Stack = StackNavigator({
-  Splash: {
-    screen: Splash
-  },
-  Login: {
-    screen: Login,
-  },
-  Drawer: {
-    screen: Drawer,
-  },
-  Register: {
-    screen: Register,
-  },
-  ForgetPass: {
-    screen: ForgetPass,
-  },
-  ForgetPass1: {
-    screen: ForgetPass1,
-  },
-  ChangePass: {
-    screen: ChangePass,
-  },
-  Guide: {
-    screen: Guide,
-  }
 
 }, {
     initialRouteName: 'Splash',

@@ -75,7 +75,7 @@ class GarageDetails extends React.Component {
     if (this.state.isLoading && !this.state.error) {
       return (
         <View style={styles.progressBar}>
-          <Spinner color="blue" />
+          <Spinner color="#EF6530" />
         </View>
       );
     } else if (this.state.error) {

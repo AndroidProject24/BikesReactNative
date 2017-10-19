@@ -171,7 +171,7 @@ class Notification extends React.PureComponent {
     if (!this.state.isLoading) return null;
     return (
       <View style={styles.progressBar}>
-        <Spinner color="blue" />
+        <Spinner color="#EF6530" />
       </View>
     );
   };

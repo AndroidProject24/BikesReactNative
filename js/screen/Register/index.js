@@ -61,7 +61,7 @@ class Register extends React.PureComponent {
         var parent = this;
         if (parent.state.isLoading && !parent.state.error) {
             <View style={styles.container}>
-                <Spinner color="blue" />
+                <Spinner color="#EF6530" />
             </View>;
         } else if (parent.state.error) {
             Toast.show({ text: parent.state.errorInfo, position: 'top', duration: 2000 })

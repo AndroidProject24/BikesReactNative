@@ -45,7 +45,7 @@ export default class ReportOut extends Component {
             </Button>
           </Left>
           <Body>
-            <Title style={styles.titleToolbar}>Báo xe đậu ngoài trạm</Title>
+            <Title style={styles.titleToolbar}>Xe đậu ngoài trạm</Title>
           </Body>
           <Right />
         </Header>
@@ -72,12 +72,17 @@ export default class ReportOut extends Component {
 
           <TouchableOpacity
             style={{
+              borderRadius: 5,
               marginTop: 20,
               marginLeft: 40,
+              backgroundColor: '#d3d3d3',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: 50, height: 50
             }}
           >
             <Image
-              style={{ width: 50, height: 50 }}
+              style={{ width: 25, height: 25 }}
               source={Constants.iconCamera} />
           </TouchableOpacity>
 

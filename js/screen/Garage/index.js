@@ -116,31 +116,31 @@ class Garage extends React.PureComponent {
         activeOpacity={0.8}
         style={styles.cardContent}
         onPress={() => this._onPressButton(item.id, item.title)}>
-            <Text
-            numberOfLines={1}
-            style={styles.title}
-            allowFontScaling={false}>
-            {item.name}
-          </Text>
+        <Text
+          numberOfLines={1}
+          style={styles.title}
+          allowFontScaling={false}>
+          {item.name}
+        </Text>
         <View style={styles.card}>
-          <Left style={{alignItems:'center'}}>
+          <Left style={{ alignItems: 'center' }}>
             <Image
               style={{ width: 60, height: 40, margin: 10 }}
               source={bikes}
             />
           </Left>
-          <Body style={{alignItems:'center', flexDirection: 'row'}}>
-              <Text
-                style={[styles.summary,{fontWeight:'bold'}]}
-                allowFontScaling={false}>
-                {item.max_bike + " "}
-                </Text>
-                  <Text style={styles.summary}
-                  allowFontScaling={false}>
-                Available bikes
+          <Body style={{ alignItems: 'center', flexDirection: 'row' }}>
+            <Text
+              style={[styles.summary, { fontWeight: 'bold' }]}
+              allowFontScaling={false}>
+              {item.max_bike + " "}
+            </Text>
+            <Text style={styles.summary}
+              allowFontScaling={false}>
+              Available bikes
               </Text>
           </Body>
-          <Right style={{alignItems:'center',marginLeft: 20}}>
+          <Right style={{ alignItems: 'center', marginLeft: 20 }}>
             <Image
               style={{ width: 60, height: 40 }}
               source={location}
@@ -191,7 +191,7 @@ class Garage extends React.PureComponent {
     if (!this.state.isLoading) return null;
     return (
       <View style={styles.progressBar}>
-        <Spinner color="blue" />
+        <Spinner color="#EF6530" />
       </View>
     );
   };

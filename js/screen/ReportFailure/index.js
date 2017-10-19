@@ -43,17 +43,17 @@ export default class ReportFailure extends Component {
   render() {
     return (
       <Container>
-      <Header style={{ backgroundColor: '#EF6530' }}>
-      <Left>
-          <Button transparent onPress={() => this.props.navigation.goBack()}>
+        <Header style={{ backgroundColor: '#EF6530' }}>
+          <Left>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
               <Icon name="arrow-back" />
-          </Button>
-      </Left>
-      <Body>
-          <Title style={styles.titleToolbar}>Báo xe hỏng</Title>
-      </Body>
-      <Right />
-    </Header>
+            </Button>
+          </Left>
+          <Body>
+            <Title style={styles.titleToolbar}>Báo xe hỏng</Title>
+          </Body>
+          <Right />
+        </Header>
         <Content>
 
           <View>
@@ -106,21 +106,27 @@ export default class ReportFailure extends Component {
                 this.setState({ more });
               }}
               style={[styles.textInput, {
+                color: 'black',
                 justifyContent: 'flex-start',
                 alignContent: 'flex-start',
                 marginLeft: 30, marginRight: 30,
                 borderRadius: 10,
-                backgroundColor: 'gray',
+                backgroundColor: '#d3d3d3',
                 height: 150, alignItems: 'flex-start'
               }]} />
             <TouchableOpacity
               style={{
+                borderRadius: 5,
                 marginTop: 20,
                 marginLeft: 40,
+                backgroundColor: '#d3d3d3',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: 50, height: 50
               }}
             >
               <Image
-                style={{ width: 50, height: 50 }}
+                style={{ width: 25, height: 25 }}
                 source={Constants.iconCamera} />
             </TouchableOpacity>
           </View>
